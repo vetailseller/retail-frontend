@@ -2,7 +2,12 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } f
 import { getCookie, setCookie, deleteCookie } from 'cookies-next';
 
 // API Configuration
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
+
+if (!API_BASE_URL && typeof window !== 'undefined') {
+  console.warn('NEXT_PUBLIC_API_BASE_URL is not set. Please configure it in your .env.local file.');
+}
+
 const TOKEN_KEY = 'auth_token';
 
 // Create axios instance

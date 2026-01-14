@@ -30,6 +30,15 @@ A production-ready Next.js application with Page Router, featuring comprehensive
 - Node.js 18+ installed
 - npm or yarn package manager
 
+### Security Note
+
+⚠️ **Important**: This project uses Next.js 14.0.4 as specified in the requirements. This version has known security vulnerabilities. For production use, consider upgrading to Next.js 14.2.25 or later after validating compatibility with your requirements.
+
+To check for vulnerabilities:
+```bash
+npm audit
+```
+
 ### Installation
 
 1. Clone the repository:

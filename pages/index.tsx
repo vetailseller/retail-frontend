@@ -133,13 +133,25 @@ export default function Home() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
-              <Button className="w-full" variant="outline">
+              <Button 
+                className="w-full" 
+                variant="outline"
+                onClick={() => router.push('/products')}
+              >
                 View Products
               </Button>
-              <Button className="w-full" variant="outline">
+              <Button 
+                className="w-full" 
+                variant="outline"
+                onClick={() => router.push('/products')}
+              >
                 Create Product
               </Button>
-              <Button className="w-full" variant="outline">
+              <Button 
+                className="w-full" 
+                variant="outline"
+                onClick={() => router.push('/products')}
+              >
                 Manage Inventory
               </Button>
             </CardContent>
