@@ -127,7 +127,11 @@ This document summarizes the implementation of the Next.js retail frontend proje
 
 ## Security Features
 - ✅ CodeQL scan: 0 alerts
-- ✅ Updated axios for security
+- ✅ Axios updated to 1.13.2 (secure version)
+- ⚠️ **CRITICAL WARNING:** Next.js 14.0.4 has multiple security vulnerabilities
+  - See SECURITY.md for complete vulnerability list
+  - **Recommendation:** Upgrade to Next.js 14.2.35+ for production
+  - Version 14.0.4 used only because it was explicitly required
 - ✅ Secure token storage in cookies
 - ✅ XSS protection via React
 - ✅ CSRF considerations documented

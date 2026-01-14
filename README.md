@@ -24,22 +24,63 @@ A production-ready Next.js application with Page Router, featuring comprehensive
 - ✅ Type-safe API service layer
 - ✅ Production-ready error handling
 
-## Getting Started
+## Security Note ⚠️
 
-### Prerequisites
-- Node.js 18+ installed
-- npm or yarn package manager
+**CRITICAL**: This project uses Next.js 14.0.4 as specified in the requirements. This version has **multiple known security vulnerabilities**:
 
-### Security Note
+### Known Vulnerabilities in Next.js 14.0.4:
+1. ❌ **Denial of Service with Server Components** (CVE-2024-XXXX)
+   - Affected: 13.3.0 - 14.2.34
+   - Patched in: 14.2.34+
+   
+2. ❌ **Authorization Bypass in Middleware** (CVE-2024-XXXX)
+   - Affected: 14.0.0 - 14.2.25
+   - Patched in: 14.2.25+
+   
+3. ❌ **Server-Side Request Forgery in Server Actions** (CVE-2024-XXXX)
+   - Affected: 13.4.0 - 14.1.1
+   - Patched in: 14.1.1+
+   
+4. ❌ **Cache Poisoning** (CVE-2024-XXXX)
+   - Affected: 14.0.0 - 14.2.10
+   - Patched in: 14.2.10+
+   
+5. ❌ **Authorization Bypass** (CVE-2024-XXXX)
+   - Affected: 9.5.5 - 14.2.15
+   - Patched in: 14.2.15+
 
-⚠️ **Important**: This project uses Next.js 14.0.4 as specified in the requirements. This version has known security vulnerabilities. For production use, consider upgrading to Next.js 14.2.25 or later after validating compatibility with your requirements.
+### Recommended Action for Production
 
-To check for vulnerabilities:
+**DO NOT use this version in production.** Upgrade to Next.js **14.2.35 or later** which patches all these vulnerabilities:
+
+```bash
+npm install next@14.2.35
+```
+
+Or for the latest stable version:
+```bash
+npm install next@latest
+```
+
+### Verification After Upgrade
+
+After upgrading Next.js:
+1. Test that the Page Router still works (this project uses Page Router, not App Router)
+2. Verify authentication flow still functions correctly
+3. Run `npm audit` to check for remaining vulnerabilities
+4. Test build: `npm run build`
+5. Test production mode: `npm start`
+
+### Why This Project Uses 14.0.4
+
+This version was specified in the project requirements. If you're using this as a template or starting point, **please upgrade immediately** before deploying to production.
+
+To check current vulnerabilities:
 ```bash
 npm audit
 ```
 
-### Installation
+## Getting Started
 
 1. Clone the repository:
 ```bash
