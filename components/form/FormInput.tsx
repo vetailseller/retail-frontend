@@ -20,7 +20,6 @@ export interface FormInputProps<TFieldValues extends FieldValues> {
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   floatingLabel?: boolean;
-  validateOnChange?: boolean;
   error?: string;
 }
 
@@ -35,7 +34,6 @@ export function FormInput<TFieldValues extends FieldValues>({
   startIcon,
   endIcon,
   floatingLabel = true,
-  validateOnChange = false,
   error,
 }: FormInputProps<TFieldValues>) {
   const [isFocused, setIsFocused] = React.useState(false);
@@ -51,7 +49,6 @@ export function FormInput<TFieldValues extends FieldValues>({
 
         const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
           setIsFocused(true);
-          field.onBlur();
         };
 
         const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {

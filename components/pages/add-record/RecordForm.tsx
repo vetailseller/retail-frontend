@@ -92,7 +92,7 @@ export function RecordForm({
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Customer ID - validates onChange */}
+          {/* Customer ID */}
           <FormInput
             name="customerId"
             control={control}
@@ -100,7 +100,6 @@ export function RecordForm({
             placeholder="Enter customer ID (optional)"
             startIcon={<User className="h-4 w-4" />}
             floatingLabel={true}
-            validateOnChange={true}
             error={errors.customerId?.message}
           />
         </div>

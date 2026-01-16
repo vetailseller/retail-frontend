@@ -26,7 +26,6 @@ export interface FormDatePickerProps<TFieldValues extends FieldValues> {
   className?: string;
   startIcon?: React.ReactNode;
   floatingLabel?: boolean;
-  validateOnChange?: boolean;
   error?: string;
   dateFormat?: string;
 }
@@ -40,7 +39,6 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
   className,
   startIcon,
   floatingLabel = true,
-  validateOnChange = false,
   error,
   dateFormat = "yyyy-MM-dd",
 }: FormDatePickerProps<TFieldValues>) {
