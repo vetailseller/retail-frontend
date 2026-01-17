@@ -61,7 +61,7 @@ export function RecordForm({
     defaultValues: {
       fee: "0",
       amount: "0",
-    } as any,
+    } as Partial<CreateRecordInput>,
     mode: "onChange",
   });
 
