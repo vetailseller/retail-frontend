@@ -80,7 +80,8 @@ export const createRecordSchema = (selectedPay?: string, selectedTab?: string) =
       const isDescriptionRequired = selectedPay === "other" || selectedTab === "bank";
       
       if (isDescriptionRequired) {
-        return data.description && data.description.trim().length > 0;
+        // Check if description exists and has content after trimming
+        return data.description !== undefined && data.description !== null && data.description.trim().length > 0;
       }
       return true;
     },
