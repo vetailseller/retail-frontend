@@ -111,7 +111,7 @@ export function PaymentTabs({
                 name="description"
                 control={control}
                 placeholder="အခြားပေး"
-                className="mt-[15px] bg-white"
+                className="mt-[15px]"
                 startIcon={
                   <ThreeLineIcon className="w-[19px] h-[19px] text-muted" />
                 }
@@ -126,7 +126,6 @@ export function PaymentTabs({
             name="description"
             control={control}
             placeholder="အခြားအမျိုးအစား"
-            className=" bg-white"
             startIcon={
               <ThreeLineIcon className="w-[19px] h-[19px] text-muted" />
             }

@@ -167,7 +167,7 @@ export function FormInput<TFieldValues extends FieldValues>({
                 placeholder={placeholder}
                 autoComplete="one-time-code"
                 className={cn(
-                  "hide-number-stepper peer w-full rounded-10 border border-input bg-transparent px-4 py-[12px] text-base shadow-sm transition-all h-[46px] focus:ring-0",
+                  "hide-number-stepper peer w-full rounded-10 border border-input bg-white px-4 py-[12px] text-base shadow-sm transition-all h-[46px] focus:ring-0",
                   "placeholder:text-muted",
                   "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
                   "disabled:cursor-not-allowed disabled:opacity-50",
