@@ -39,12 +39,10 @@ export enum RecordStatus {
 }
 
 export interface CreateRecordInput {
-  title: string;
-  description?: string;
-  amount?: number;
+  phoneNo: string;
   date: string;
-  category?: string;
-  customerId?: string;
+  amount: string;
+  fee: string;
 }
 
 export interface UpdateRecordInput extends Partial<CreateRecordInput> {

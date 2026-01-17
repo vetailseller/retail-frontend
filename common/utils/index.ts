@@ -67,11 +67,14 @@ export function formatDate(
 export function formatCalendarDate(value: Date | string) {
   const date = new Date(value);
 
-  return date.toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
+  return date
+    .toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    })
+    .split(" ")
+    .join("-");
 }
 
 /**
@@ -220,4 +223,8 @@ export function calculatePercentage(value: number, total: number): number {
  */
 export function formatNumber(num: number): string {
   return num.toLocaleString("en-US");
+}
+
+export function removeNumberComma(numStr: string) {
+  return numStr.replace(/,/g, "");
 }
