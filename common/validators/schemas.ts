@@ -43,6 +43,7 @@ export type RegisterFormData = z.infer<typeof registerSchema>;
 
 // Record Schema
 export const recordSchema = z.object({
+  description: z.string().optional(),
   phoneNo: z
     .string("အချက်အလက်ဖြည့်ရန် *")
     .min(7, "ဖုန်းနံပါတ် သည် ၇ လုံးမှ ၁၁ လုံးကြားရှိရမည်")
@@ -56,14 +57,14 @@ export const recordSchema = z.object({
     .string("အချက်အလက်ဖြည့်ရန် *")
     .refine(
       (val) => !isNaN(Number(val.replace(/,/g, ""))),
-      "ဂဏန်းသီးသန့်ဖြစ်ရမည်"
+      "ဂဏန်းသီးသန့်ဖြစ်ရမည်",
     )
     .refine((val) => Number(val.replace(/,/g, "")) > 0, "အချက်အလက်ဖြည့်ရန် *"),
   fee: z
     .string("အချက်အလက်ဖြည့်ရန် *")
     .refine(
       (val) => !isNaN(Number(val.replace(/,/g, ""))),
-      "ဂဏန်းသီးသန့်ဖြစ်ရမည်"
+      "ဂဏန်းသီးသန့်ဖြစ်ရမည်",
     )
     .refine((val) => Number(val.replace(/,/g, "")) > 0, "အချက်အလက်ဖြည့်ရန် *"),
 });

@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
+import { cn } from "@/common/utils";
+import { MutableRefObject } from "react";
 
 export interface ConfirmDialogProps {
   open: boolean;
@@ -55,7 +57,7 @@ export function ConfirmDialog({
       <DialogPortal>
         <DialogOverlay />
         <DialogPrimitive.Content
-          className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg flex flex-col items-center justify-center text-center"
+          className="fixed left-[50%] top-[50%] z-50 w-full max-w-[335px] translate-x-[-50%] translate-y-[-50%] gap-3 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg flex flex-col items-center justify-center text-center font-primary"
           onInteractOutside={(e) => e.preventDefault()}
           onEscapeKeyDown={(e) => e.preventDefault()}
         >
@@ -66,47 +68,65 @@ export function ConfirmDialog({
             </DialogPrimitive.Close>
           )}
 
-        <DialogHeader className="flex flex-col items-center space-y-3 text-center">
-          {icon && <div className="flex justify-center mb-2">{icon}</div>}
-          <DialogTitle className="text-center">{title}</DialogTitle>
-          {subtitle && (
-            <DialogDescription className="text-center">
-              {subtitle}
-            </DialogDescription>
-          )}
-        </DialogHeader>
-
-        <DialogFooter className="flex flex-col sm:flex-col gap-2 w-full items-center justify-center mt-4">
-          <Button
-            onClick={onPrimaryClick}
-            disabled={primaryButtonDisabled}
-            className="w-full sm:w-auto"
+          <DialogHeader
+            className={cn(
+              "flex flex-col items-center space-y-3 text-center w-full",
+              showCloseButton && "mt-3",
+              !subtitle ? "mb-3" : "mb-2",
+            )}
           >
-            {primaryButtonText}
-          </Button>
+            {icon && (
+              <div
+                className={cn(
+                  "flex justify-center",
+                  subtitle ? "mb-3" : "mb-5",
+                )}
+              >
+                {icon}
+              </div>
+            )}
+            <DialogTitle className="text-center text-16px font-semibold">
+              {title}
+            </DialogTitle>
+            {subtitle && (
+              <DialogDescription className="text-12px text-center text-muted">
+                {subtitle}
+              </DialogDescription>
+            )}
+          </DialogHeader>
 
-          {secondaryButtonHref ? (
+          <DialogFooter className="flex flex-col sm:flex-col gap-2 w-full items-center justify-center mt-1 font-primary">
             <Button
-              asChild
-              variant="plain"
-              size="plain"
-              className="w-full sm:w-auto"
+              onClick={onPrimaryClick}
+              disabled={primaryButtonDisabled}
+              className="w-full text-white"
             >
-              <Link href={secondaryButtonHref}>{secondaryButtonText}</Link>
+              <span className="text-16px w-full font-medium">
+                {primaryButtonText}
+              </span>
             </Button>
-          ) : (
-            <Button
-              onClick={handleSecondaryClick}
-              variant="plain"
-              size="plain"
-              className="w-full sm:w-auto"
-            >
-              {secondaryButtonText}
-            </Button>
-          )}
-        </DialogFooter>
-      </DialogPrimitive.Content>
-    </DialogPortal>
+
+            {secondaryButtonHref ? (
+              <Button
+                asChild
+                variant="plain"
+                size="plain"
+                className="w-full py-[11px] px-[77px] text-15px hover:text-gray-700"
+              >
+                <Link href={secondaryButtonHref}>{secondaryButtonText}</Link>
+              </Button>
+            ) : (
+              <Button
+                onClick={handleSecondaryClick}
+                variant="plain"
+                className="w-full m-0 font-normal hover:text-gray-700"
+              >
+                {secondaryButtonText}
+              </Button>
+            )}
+          </DialogFooter>
+        </DialogPrimitive.Content>
+      </DialogPortal>
     </Dialog>
   );
 }

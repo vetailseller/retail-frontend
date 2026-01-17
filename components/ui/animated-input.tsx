@@ -6,8 +6,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export interface AnimatedInputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface AnimatedInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
   startIcon?: React.ReactNode;
@@ -56,7 +55,7 @@ const AnimatedInput = React.forwardRef<HTMLInputElement, AnimatedInputProps>(
               "disabled:cursor-not-allowed disabled:opacity-50",
               error && "border-destructive focus-visible:ring-destructive",
               startIcon && "pl-10",
-              endIcon && "pr-10"
+              endIcon && "pr-10",
             )}
             ref={ref}
             onFocus={handleFocus}
@@ -75,7 +74,7 @@ const AnimatedInput = React.forwardRef<HTMLInputElement, AnimatedInputProps>(
                 isFloating && "top-0 text-xs",
                 error && isFloating && "text-destructive",
                 startIcon && !isFloating && "left-10",
-                startIcon && isFloating && "left-5"
+                startIcon && isFloating && "left-5",
               )}
             >
               {label}
@@ -93,7 +92,7 @@ const AnimatedInput = React.forwardRef<HTMLInputElement, AnimatedInputProps>(
         {error && <p className="text-sm text-destructive mt-1.5">{error}</p>}
       </div>
     );
-  }
+  },
 );
 
 AnimatedInput.displayName = "AnimatedInput";
