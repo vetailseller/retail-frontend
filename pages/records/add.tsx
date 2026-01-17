@@ -1,4 +1,6 @@
-import { useState } from "react";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { Card, CardContent } from "@/components/ui/card";
 import { recordService } from "@/lib/api/records";
@@ -11,12 +13,10 @@ import { InfoCard, RecordForm } from "@/components/pages/add-record";
 export default function AddRecord() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const [isConfirming, setIsConfirming] = useState(false);
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (data: CreateRecordInput | UpdateRecordInput) => {
-    setIsConfirming(true);
     try {
       setIsLoading(true);
       setError("");

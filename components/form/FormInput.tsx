@@ -1,7 +1,4 @@
-/**
- * FormInput Component
- * Reusable form input wrapper with RHF integration, optional floating labels, and validation
- */
+"use client";
 
 import * as React from "react";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
@@ -92,20 +89,19 @@ export function FormInput<TFieldValues extends FieldValues>({
                   disabled={disabled}
                   placeholder={placeholder}
                   className={cn(
-                    "hide-number-stepper peer w-full rounded-10 border border-input bg-transparent px-4 py-[10px] text-base shadow-sm transition-all",
+                    "hide-number-stepper peer w-full rounded-10 border border-input bg-transparent px-4 py-[10px] text-base shadow-sm transition-all no-autofill-bg",
                     "placeholder:text-transparent",
                     "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
                     "disabled:cursor-not-allowed disabled:opacity-50",
                     errorMessage &&
                       "border-destructive focus-visible:ring-destructive",
                     startIcon && "pl-11",
-                    endIcon && "pr-10"
+                    endIcon && "pr-10",
                   )}
                   onFocus={handleFocus}
                   onBlur={handleBlur}
                   onChange={handleChange}
                 />
-
                 {label && (
                   <label
                     className={cn(
@@ -116,7 +112,7 @@ export function FormInput<TFieldValues extends FieldValues>({
                       isFloating && "top-0 text-xs",
                       errorMessage && isFloating && "text-destructive",
                       startIcon && !isFloating && "left-10",
-                      startIcon && isFloating && "left-5"
+                      startIcon && isFloating && "left-5",
                     )}
                   >
                     {label}
@@ -148,7 +144,7 @@ export function FormInput<TFieldValues extends FieldValues>({
                 htmlFor={name}
                 className={cn(
                   errorMessage && "text-destructive",
-                  "font-primary text-13px text-[#4C4C4C] font-medium"
+                  "font-primary text-13px text-[#4C4C4C] font-medium",
                 )}
               >
                 {label}
@@ -169,15 +165,16 @@ export function FormInput<TFieldValues extends FieldValues>({
                 type={type}
                 disabled={disabled}
                 placeholder={placeholder}
+                autoComplete="one-time-code"
                 className={cn(
                   "hide-number-stepper peer w-full rounded-10 border border-input bg-transparent px-4 py-[12px] text-base shadow-sm transition-all h-[46px] focus:ring-0",
-                  "placeholder:text-transparent",
+                  "placeholder:text-muted",
                   "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
                   "disabled:cursor-not-allowed disabled:opacity-50",
                   errorMessage &&
                     "border-destructive focus-visible:ring-destructive",
                   startIcon && "pl-11",
-                  endIcon && "pr-10"
+                  endIcon && "pr-10",
                 )}
                 onFocus={handleFocus}
                 onBlur={handleBlur}

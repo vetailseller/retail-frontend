@@ -118,7 +118,7 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
                         "w-full justify-start text-left font-normal px-3 py-[10px] h-auto rounded-10 border-input bg-white hover:bg-white hover:text-black",
                         !dateValue && "text-muted-foreground",
                         errorMessage && "border-destructive",
-                        startIcon && "pl-10"
+                        startIcon && "pl-10",
                       )}
                     >
                       {startIcon && (
@@ -192,7 +192,7 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
                       isFloating && "top-0 text-xs",
                       errorMessage && isFloating && "text-destructive",
                       startIcon && !isFloating && "left-10",
-                      startIcon && isFloating && "left-5"
+                      startIcon && isFloating && "left-5",
                     )}
                   >
                     {label}
@@ -233,7 +233,7 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
                     !dateValue && "text-muted-foreground",
                     errorMessage &&
                       "border-destructive focus-visible:ring-destructive",
-                    startIcon && "pl-10"
+                    startIcon && "pl-10",
                   )}
                 >
                   {startIcon && (

@@ -37,6 +37,7 @@ export function QuickActions() {
       <CardContent className="flex justify-between font-primary px-[15px] py-[13px]">
         {actions.map((action) => (
           <Link
+            key={action.route}
             href={action.route}
             className="flex flex-col items-center gap-2"
           >
