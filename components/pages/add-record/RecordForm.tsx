@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,7 @@ import { recordSchema } from "@/common/validators/schemas";
 import { CreateRecordInput, UpdateRecordInput } from "@/common/types";
 import CalendarIcon from "@/components/icons/calendar.svg";
 import FloppyDisk from "@/components/icons/floppy-disk.svg";
+import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 
 import PhoneIcon from "@/components/icons/phone.svg";
 
@@ -25,6 +26,9 @@ export function RecordForm({
   isLoading,
   isEdit = false,
 }: RecordFormProps) {
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [pendingData, setPendingData] = useState<CreateRecordInput | null>(null);
+
   const {
     handleSubmit,
     control,
@@ -45,8 +49,21 @@ export function RecordForm({
       data,
     });
 
+    // Store the data and show confirmation dialog instead of submitting immediately
+    setPendingData(data);
+    setShowConfirmDialog(true);
+  };
+
+  const handleConfirmSubmit = async () => {
+    if (!pendingData) return;
+
+    console.log("[Form] Confirmed Submission State:", {
+      isSubmitting: true,
+      data: pendingData,
+    });
+
     try {
-      await onSubmit(data);
+      await onSubmit(pendingData);
       console.log("[Form] Submission State:", {
         isSubmitting: false,
         success: true,
@@ -54,13 +71,21 @@ export function RecordForm({
       if (!isEdit) {
         reset();
       }
+      setShowConfirmDialog(false);
+      setPendingData(null);
     } catch (error) {
       console.error("[Form] Submission State:", {
         isSubmitting: false,
         success: false,
         error,
       });
+      setShowConfirmDialog(false);
     }
+  };
+
+  const handleCancelSubmit = () => {
+    setShowConfirmDialog(false);
+    setPendingData(null);
   };
 
   return (
@@ -132,6 +157,20 @@ export function RecordForm({
           <FloppyDisk />
         </Button>
       </div>
+
+      <ConfirmDialog
+        open={showConfirmDialog}
+        onOpenChange={setShowConfirmDialog}
+        icon={<FloppyDisk className="w-12 h-12" />}
+        title="အတည်ပြုပါ"
+        subtitle="စာရင်းမှတ်တမ်းကို သိမ်းဆည်းမှာ သေချာပါသလား?"
+        primaryButtonText="သေချာပါသည်"
+        secondaryButtonText="ပြန်စစ်ဆေးမည်"
+        onPrimaryClick={handleConfirmSubmit}
+        onSecondaryClick={handleCancelSubmit}
+        showCloseButton={false}
+        primaryButtonDisabled={isLoading}
+      />
     </form>
   );
 }
