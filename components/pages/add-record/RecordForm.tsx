@@ -27,7 +27,7 @@ export function RecordForm({
   isEdit = false,
 }: RecordFormProps) {
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
-  const [pendingData, setPendingData] = useState<CreateRecordInput | null>(null);
+  const [pendingData, setPendingData] = useState<CreateRecordInput | UpdateRecordInput | null>(null);
 
   const {
     handleSubmit,
