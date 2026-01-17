@@ -31,7 +31,7 @@ const PAY_OPTIONS = [
 export interface PaymentTabsProps {
   selectedTab: string;
   selectedPay: string;
-  control: Control<any>;
+  control: Control<CreateRecordInput>;
   errors: FieldErrors<CreateRecordInput>;
   onTabChange: (value: string) => void;
   onPayChange: (value: string) => void;

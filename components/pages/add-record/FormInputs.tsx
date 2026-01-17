@@ -6,7 +6,7 @@ import PhoneIcon from "@/components/icons/phone.svg";
 import { CreateRecordInput } from "@/common/types";
 
 export interface FormInputsProps {
-  control: Control<any>;
+  control: Control<CreateRecordInput>;
   errors: FieldErrors<CreateRecordInput>;
 }
 
