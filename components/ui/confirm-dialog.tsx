@@ -51,7 +51,7 @@ export function ConfirmDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange} modal>
       <DialogContent
-        className="sm:max-w-md flex flex-col items-center justify-center text-center [&>button]:hidden"
+        className="sm:max-w-md flex flex-col items-center justify-center text-center [&>button.absolute.right-4.top-4]:hidden"
         onInteractOutside={(e) => e.preventDefault()}
         onEscapeKeyDown={(e) => e.preventDefault()}
       >

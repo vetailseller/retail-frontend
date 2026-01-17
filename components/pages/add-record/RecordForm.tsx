@@ -80,6 +80,7 @@ export function RecordForm({
         error,
       });
       setShowConfirmDialog(false);
+      setPendingData(null);
     }
   };
 
