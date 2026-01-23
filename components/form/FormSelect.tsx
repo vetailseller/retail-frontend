@@ -97,7 +97,8 @@ export function FormSelect<TFieldValues extends FieldValues>({
                     errorMessage &&
                       "border-destructive focus-visible:ring-destructive",
                     startIcon && "pl-11",
-                    endIcon && "pr-10",
+                    (endIcon || helperText) && "pr-10",
+                    endIcon && helperText && "pr-32",
                   )}
                   onFocus={handleFocus}
                   onBlur={handleBlur}
@@ -137,7 +138,7 @@ export function FormSelect<TFieldValues extends FieldValues>({
                 )}
 
                 {helperText && !errorMessage && (
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted pointer-events-none z-10 text-11px">
+                  <div className="absolute right-10 top-1/2 -translate-y-1/2 text-muted pointer-events-none z-10 text-11px whitespace-nowrap">
                     {helperText}
                   </div>
                 )}
@@ -188,6 +189,7 @@ export function FormSelect<TFieldValues extends FieldValues>({
                     "border-destructive focus-visible:ring-destructive",
                   startIcon && "pl-11",
                   (endIcon || helperText) && "pr-10",
+                  endIcon && helperText && "pr-32",
                 )}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
@@ -209,8 +211,8 @@ export function FormSelect<TFieldValues extends FieldValues>({
                 </div>
               )}
 
-              {helperText && !errorMessage && !endIcon && (
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted pointer-events-none z-10 text-11px whitespace-nowrap">
+              {helperText && !errorMessage && (
+                <div className="absolute right-10 top-1/2 -translate-y-1/2 text-muted pointer-events-none z-10 text-11px whitespace-nowrap">
                   {helperText}
                 </div>
               )}
