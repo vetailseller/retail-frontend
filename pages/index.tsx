@@ -105,11 +105,6 @@ export const records: RecordItem[] = [
   },
 ];
 
-export const totals = {
-  amount: 8045970,
-  fee: 7045970,
-};
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-background flex flex-col">

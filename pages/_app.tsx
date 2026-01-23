@@ -1,13 +1,11 @@
 import { cn } from "@/common/utils";
 import { inter, notoSansMyanmar, pyidaungsu } from "@/lib/fonts";
+import { Toaster } from "sonner";
 import { useAuthStore } from "@/lib/store/authStore";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-
-// Public routes that don't require authentication
-const publicRoutes = ["/login", "/register"];
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -18,29 +16,25 @@ export default function App({ Component, pageProps }: AppProps) {
     const hasToken = checkAuth();
 
     // If no token and trying to access protected route
-    if (!hasToken && !publicRoutes.includes(router.pathname)) {
+    if (!hasToken) {
       //   router.replace("/login");
       console.log("You are not logged in");
-    }
-
-    // If has token and trying to access login/register
-    if (hasToken && publicRoutes.includes(router.pathname)) {
-      router.replace("/");
     }
   }, [router.pathname, checkAuth, router]);
 
   return (
     <div
       className={cn(
-        "flex items-center justify-center bg-white",
+        "flex items-center justify-center bg-white overflow-y-auto",
         notoSansMyanmar.variable,
         pyidaungsu.variable,
-        inter.variable
+        inter.variable,
       )}
     >
       <div className="container">
         <Component {...pageProps} />
       </div>
+      <Toaster richColors position="top-right" />
     </div>
   );
 }

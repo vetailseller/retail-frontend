@@ -73,6 +73,7 @@ const requiredRecordSchema = baseRecordSchema.extend({
   description: z
     .string("အချက်အလက်ဖြည့်ရန် *")
     .min(1, "အချက်အလက်ဖြည့်ရန် *")
+    .max(1000, "အချက်အလက်သည် အများဆုံး ၁၀၀၀ အက္ခရာရှိနိုင်သည်")
     .refine((val) => val.trim().length > 0, "အချက်အလက်ဖြည့်ရန် *"),
 });
 

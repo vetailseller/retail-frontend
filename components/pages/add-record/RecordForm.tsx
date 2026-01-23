@@ -5,7 +5,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { recordSchema, createRecordSchema } from "@/common/validators/schemas";
-import { CreateRecordInput, UpdateRecordInput } from "@/common/types";
+import {
+  CreateRecordApiInput,
+  CreateRecordInput,
+  PayType,
+  RecordType,
+  UpdateRecordInput,
+} from "@/common/types";
 import FloppyDisk from "@/components/icons/floppy-disk.svg";
 import QuestionMarkIcon from "@/components/icons/question-mark.svg";
 import CheckCircleIcon from "@/components/icons/check-circle.svg";
@@ -13,11 +19,10 @@ import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { ROUTES } from "@/common/constants";
 import { PaymentTabs } from "./PaymentTabs";
 import { FormInputs } from "./FormInputs";
+import { removeNumberComma } from "@/common/utils";
 
 export interface RecordFormProps {
-  onSubmit: (
-    data: CreateRecordInput | UpdateRecordInput,
-  ) => void | Promise<void>;
+  onSubmit: (data: CreateRecordApiInput) => void | Promise<void>;
   defaultValues?: CreateRecordInput;
   isLoading?: boolean;
   isEdit?: boolean;
@@ -30,16 +35,17 @@ export function RecordForm({
   isEdit = false,
 }: RecordFormProps) {
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
-  const [pendingData, setPendingData] = useState<
-    CreateRecordInput | UpdateRecordInput | null
-  >(null);
+  const [pendingData, setPendingData] = useState<CreateRecordInput | null>(
+    null,
+  );
   const [isSuccess, setIsSuccess] = useState(false);
-  const [selectedPay, setSelectedPay] = useState("kbzpay");
-  const [selectedTab, setSelectedTab] = useState("pay");
+  const [selectedPay, setSelectedPay] = useState<PayType>("kbz");
+  const [selectedTab, setSelectedTab] = useState<RecordType>("pay");
 
   const {
     handleSubmit,
     control,
+    setValue,
     reset,
     formState: { errors, isSubmitting },
   } = useForm<CreateRecordInput>({
@@ -55,11 +61,6 @@ export function RecordForm({
   });
 
   const handleFormSubmit = async (data: CreateRecordInput) => {
-    console.log("[Form] Submission State:", {
-      isSubmitting: true,
-      data,
-    });
-
     setPendingData(data);
     setShowConfirmDialog(true);
   };
@@ -68,7 +69,17 @@ export function RecordForm({
     if (!pendingData) return;
 
     try {
-      await onSubmit(pendingData);
+      await onSubmit({
+        ...pendingData,
+        amount: Number(removeNumberComma(pendingData.amount)),
+        fee: Number(removeNumberComma(pendingData.fee)),
+        pay: selectedTab === "pay" ? selectedPay : "other",
+        description:
+          selectedPay === "other" || selectedTab === "bank"
+            ? pendingData.description
+            : "",
+        type: selectedTab,
+      });
 
       if (!isEdit) {
         reset();
@@ -95,7 +106,7 @@ export function RecordForm({
   return (
     <form
       onSubmit={handleSubmit(handleFormSubmit)}
-      className="flex flex-col gap-6 mt-5 h-full flex-1 relative overflow-y-auto"
+      className="flex flex-col gap-6 mt-5 relative flex-1"
     >
       <PaymentTabs
         selectedTab={selectedTab}
@@ -106,9 +117,9 @@ export function RecordForm({
         onPayChange={setSelectedPay}
       />
 
-      <FormInputs control={control} errors={errors} />
+      <FormInputs control={control} setValue={setValue} errors={errors} />
 
-      <div className="flex items-center justify-center gap-3 w-full h-[94px] shadow-[0px_-2px_15px_0px_rgba(0,0,0,0.1)] mt-auto">
+      <div className="flex items-center justify-center gap-3 w-full h-[94px] shadow-[0px_-2px_15px_0px_rgba(0,0,0,0.1)] sticky bottom-0 left-0 bg-white mt-auto">
         <Button
           type="submit"
           disabled={isLoading || isSubmitting}

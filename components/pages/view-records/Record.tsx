@@ -15,7 +15,7 @@ export function Record({ record }: RecordsListProps) {
       key={record.id}
       className={cn(
         "w-full border-b last:border-0 pb-[15px] px-[15px] hover:bg-gray-50 flex flex-col",
-        PaymentImage ? "pt-[12.75px] gap-[12.75px]" : "pt-5 gap-5"
+        PaymentImage ? "pt-[12.75px] gap-[12.75px]" : "pt-5 gap-5",
       )}
     >
       <div className=" flex justify-between items-center">

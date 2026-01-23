@@ -74,6 +74,8 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
         };
 
         const handleDateSelect = (date: Date | undefined) => {
+          if (!date) return;
+
           if (showOkButton || showCancelButton) {
             // If action buttons are shown, just update temp date
             setTempDate(date);

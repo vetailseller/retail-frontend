@@ -18,7 +18,7 @@ export function cn(...inputs: ClassValue[]) {
  */
 export function formatCurrency(
   amount: number,
-  currency: string = "USD"
+  currency: string = "USD",
 ): string {
   return new Intl.NumberFormat("en-US").format(amount);
 }
@@ -28,7 +28,7 @@ export function formatCurrency(
  */
 export function formatDate(
   date: string | Date,
-  format: string = "MMM DD, YYYY"
+  format: string = "MMM DD, YYYY",
 ): string {
   const d = typeof date === "string" ? new Date(date) : date;
 
@@ -98,7 +98,7 @@ export function capitalize(str: string): string {
 export function truncate(
   str: string,
   length: number = 50,
-  suffix: string = "..."
+  suffix: string = "...",
 ): string {
   if (str.length <= length) return str;
   return str.substring(0, length - suffix.length) + suffix;
@@ -109,7 +109,7 @@ export function truncate(
  */
 export function debounce<T extends (...args: any[]) => any>(
   func: T,
-  wait: number
+  wait: number,
 ): (...args: Parameters<T>) => void {
   let timeout: NodeJS.Timeout | null = null;
 
@@ -222,6 +222,7 @@ export function calculatePercentage(value: number, total: number): number {
  * Format number with commas
  */
 export function formatNumber(num: number): string {
+  if (num === null || num === undefined || isNaN(num) || num === 0) return "0";
   return num.toLocaleString("en-US");
 }
 

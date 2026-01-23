@@ -7,34 +7,34 @@ import Image from "next/image";
 import If from "@/components/If";
 import CheckCircleSmIcon from "@/components/icons/check-circle-sm.svg";
 import ThreeLineIcon from "@/components/icons/three-line.svg";
-import { CreateRecordInput } from "@/common/types";
+import { CreateRecordInput, PayType, RecordType } from "@/common/types";
 
 const PAY_OPTIONS = [
   {
-    value: "kbzpay",
+    value: "kbz",
     image: "/images/kbz-pay.png",
   },
   {
-    value: "wavepay",
+    value: "wave",
     image: "/images/wave-pay.png",
   },
   {
-    value: "ayapay",
+    value: "aya",
     image: "/images/aya-pay.png",
   },
   {
-    value: "uabpay",
+    value: "uab",
     image: "/images/uab-pay.png",
   },
 ];
 
 export interface PaymentTabsProps {
-  selectedTab: string;
-  selectedPay: string;
+  selectedTab: RecordType;
+  selectedPay: PayType;
   control: Control<CreateRecordInput>;
   errors: FieldErrors<CreateRecordInput>;
-  onTabChange: (value: string) => void;
-  onPayChange: (value: string) => void;
+  onTabChange: (value: RecordType) => void;
+  onPayChange: (value: PayType) => void;
 }
 
 export function PaymentTabs({
@@ -50,7 +50,7 @@ export function PaymentTabs({
       <Tabs
         defaultValue={selectedTab}
         className="w-full p-[10px] bg-[#F7F7F7] rounded-8"
-        onValueChange={onTabChange}
+        onValueChange={onTabChange as (value: string) => void}
       >
         <TabsList className="w-full mb-[9.48px]">
           <TabsTrigger value="pay" className="w-1/2">
@@ -67,7 +67,7 @@ export function PaymentTabs({
                 type="button"
                 variant="plain"
                 size="plain"
-                onClick={() => onPayChange(pay.value)}
+                onClick={() => onPayChange(pay.value as PayType)}
                 key={pay.value}
                 className="relative"
               >
@@ -79,7 +79,7 @@ export function PaymentTabs({
                   className="rounded-5"
                 />
                 <If
-                  isTrue={selectedPay === pay.value}
+                  isTrue={selectedPay === (pay.value as PayType)}
                   ifBlock={
                     <CheckCircleSmIcon className="w-[5px]! h-[5px]! absolute -right-2 -top-2" />
                   }

@@ -20,6 +20,7 @@ export interface FormInputProps<TFieldValues extends FieldValues> {
   floatingLabel?: boolean;
   isCurrency?: boolean;
   error?: string;
+  onChange?: (value: string) => void;
 }
 
 export function FormInput<TFieldValues extends FieldValues>({
@@ -35,6 +36,7 @@ export function FormInput<TFieldValues extends FieldValues>({
   floatingLabel = true,
   isCurrency = false,
   error,
+  onChange,
 }: FormInputProps<TFieldValues>) {
   const [isFocused, setIsFocused] = React.useState(false);
   const [hasValue, setHasValue] = React.useState(false);
@@ -68,6 +70,9 @@ export function FormInput<TFieldValues extends FieldValues>({
           } else {
             setHasValue(!!rawValue);
             field.onChange(e);
+          }
+          if (onChange) {
+            onChange(e.target.value);
           }
         };
 

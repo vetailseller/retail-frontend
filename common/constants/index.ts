@@ -5,19 +5,22 @@
 
 // API Endpoints
 export const API_ENDPOINTS = {
+  TOTAL: {
+    GET: () => `/transfer-totals`,
+  },
   RECORDS: {
-    LIST: "/records",
-    CREATE: "/records",
-    GET: (id: string) => `/records/${id}`,
-    UPDATE: (id: string) => `/records/${id}`,
-    DELETE: (id: string) => `/records/${id}`,
+    LIST: "/transfer-records",
+    CREATE: "/transfer-records",
   },
   FEES: {
-    LIST: "/fees",
-    CREATE: "/fees",
-    GET: (id: string) => `/fees/${id}`,
-    UPDATE: (id: string) => `/fees/${id}`,
-    DELETE: (id: string) => `/fees/${id}`,
+    LIST: "/transfer-fees",
+    CREATE: "/transfer-fees",
+    GET: (amount: number) => `/transfer-fees/amount/${amount}`,
+    UPDATE: (id: string) => `/transfer-fees/${id}`,
+    DELETE: (id: string) => `/transfer-fees/${id}`,
+  },
+  BRANCHES: {
+    LIST: () => `/branches`,
   },
 } as const;
 
@@ -25,9 +28,9 @@ export const API_ENDPOINTS = {
 export const ROUTES = {
   HOME: "/",
   REGISTER: "/register",
-  ADD_RECORD: "/records/add",
-  VIEW_RECORDS: "/records/view",
-  ADD_FEE: "/fees/add",
+  ADD_RECORD: "/transfer-records/add",
+  VIEW_RECORDS: "/transfer-records/view",
+  ADD_FEE: "/transfer-fees/add",
 } as const;
 
 // Form Field Types

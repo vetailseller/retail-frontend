@@ -5,12 +5,32 @@ import EyeClosedIcon from "@/components/icons/eye-closed.svg";
 import EyeOpenedIcon from "@/components/icons/eye-opened.svg";
 import IfElse from "@/components/IfElse";
 import { Button } from "@/components/ui/button";
-import { totals } from "@/pages";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { totalService } from "@/lib/api/total";
+import { toast } from "sonner";
 
 export function Envelope() {
   const [showAmount, setShowAmount] = useState(true);
   const [showFee, setShowFee] = useState(true);
+
+  const [total, setTotal] = useState({ total: 0, fee: 0 });
+  useEffect(() => {
+    totalService
+      .getOne()
+      .then(({ transferTotal }) => {
+        if (transferTotal) {
+          setTotal({ total: transferTotal.total, fee: transferTotal.fee });
+        } else {
+          setTotal({ total: 0, fee: 0 });
+        }
+      })
+      .catch((error) => {
+        setTotal({ total: 0, fee: 0 });
+        toast.error("Failed to load total data", {
+          id: "fetch-total-error",
+        });
+      });
+  }, []);
 
   return (
     <div className="mx-auto relative w-[378px] h-[233px] bg-[url('/images/envelope-bg.png')] bg-cover bg-no-repeat flex items-center justify-center -mt-[116px]">
@@ -47,7 +67,7 @@ export function Envelope() {
               </div>
               <div className="flex items-center">
                 <span className="font-inter font-semibold text-21px">
-                  {showAmount ? formatNumber(totals.amount) : "* * * * * *"}
+                  {showAmount ? formatNumber(total.total) : "* * * * * *"}
                 </span>
                 <span className="text-15px ml-1"> Ks</span>
               </div>
@@ -71,7 +91,7 @@ export function Envelope() {
               </div>
               <div className="flex items-center font-inter">
                 <span className="font-semibold text-21px">
-                  {showFee ? formatNumber(totals.fee) : "* * * * * *"}
+                  {showFee ? formatNumber(total.fee) : "* * * * * *"}
                 </span>
                 <span className="text-15px ml-1">Ks</span>
               </div>
