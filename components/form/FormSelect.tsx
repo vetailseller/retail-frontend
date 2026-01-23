@@ -4,6 +4,13 @@ import * as React from "react";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export interface FormSelectOption {
   value: string;
@@ -17,9 +24,6 @@ export interface FormSelectProps<TFieldValues extends FieldValues> {
   placeholder?: string;
   disabled?: boolean;
   className?: string;
-  startIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
-  floatingLabel?: boolean;
   error?: string;
   options: FormSelectOption[];
   required?: boolean;
@@ -34,18 +38,12 @@ export function FormSelect<TFieldValues extends FieldValues>({
   placeholder,
   disabled = false,
   className,
-  startIcon,
-  endIcon,
-  floatingLabel = true,
   error,
   options,
   required = false,
   helperText,
   onChange,
 }: FormSelectProps<TFieldValues>) {
-  const [isFocused, setIsFocused] = React.useState(false);
-  const [hasValue, setHasValue] = React.useState(false);
-
   return (
     <Controller
       name={name}
@@ -53,114 +51,7 @@ export function FormSelect<TFieldValues extends FieldValues>({
       rules={{ required: required ? "This field is required" : false }}
       render={({ field, fieldState }) => {
         const errorMessage = error || fieldState.error?.message;
-        const isFloating =
-          floatingLabel && (isFocused || hasValue || field.value);
 
-        // Calculate right padding based on icons and helper text
-        const getRightPadding = () => {
-          if (endIcon && helperText) return "pr-32";
-          if (endIcon || helperText) return "pr-10";
-          return "";
-        };
-
-        const handleFocus = () => {
-          setIsFocused(true);
-        };
-
-        const handleBlur = () => {
-          setIsFocused(false);
-          setHasValue(!!field.value);
-          field.onBlur();
-        };
-
-        const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-          const value = e.target.value;
-          setHasValue(!!value);
-          field.onChange(value);
-          if (onChange) {
-            onChange(value);
-          }
-        };
-
-        // Floating label implementation
-        if (floatingLabel) {
-          return (
-            <div className={cn("w-full", className)}>
-              <div className="relative">
-                {startIcon && (
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-muted pointer-events-none z-10">
-                    {startIcon}
-                  </div>
-                )}
-
-                <select
-                  {...field}
-                  value={field.value ?? ""}
-                  disabled={disabled}
-                  className={cn(
-                    "peer w-full rounded-10 border border-input bg-transparent px-4 py-[10px] text-base shadow-sm transition-all appearance-none cursor-pointer",
-                    "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
-                    "disabled:cursor-not-allowed disabled:opacity-50",
-                    errorMessage &&
-                      "border-destructive focus-visible:ring-destructive",
-                    startIcon && "pl-11",
-                    getRightPadding(),
-                  )}
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                >
-                  <option value="" disabled hidden>
-                    {placeholder}
-                  </option>
-                  {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-
-                {label && (
-                  <label
-                    className={cn(
-                      "absolute left-3 top-1/2 -translate-y-1/2",
-                      "pointer-events-none font-secondary text-14px text-muted",
-                      "transition-all duration-200 ease-linear",
-                      "bg-white px-1",
-                      isFloating && "top-0 text-xs",
-                      errorMessage && isFloating && "text-destructive",
-                      startIcon && !isFloating && "left-10",
-                      startIcon && isFloating && "left-5",
-                    )}
-                  >
-                    {label}
-                  </label>
-                )}
-
-                {endIcon && (
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted pointer-events-none z-10">
-                    {endIcon}
-                  </div>
-                )}
-
-                {helperText && !errorMessage && (
-                  <div className="absolute right-10 top-1/2 -translate-y-1/2 text-muted pointer-events-none z-10 text-11px whitespace-nowrap">
-                    {helperText}
-                  </div>
-                )}
-              </div>
-
-              {/* Error Message */}
-              {errorMessage && (
-                <p className="text-11px text-destructive mt-1">
-                  {errorMessage}
-                </p>
-              )}
-            </div>
-          );
-        }
-
-        // Normal label above select
         return (
           <div className={cn("w-full", className)}>
             {label && (
@@ -175,51 +66,38 @@ export function FormSelect<TFieldValues extends FieldValues>({
               </Label>
             )}
 
-            <div className="relative mt-2">
-              {startIcon && (
-                <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted pointer-events-none z-10">
-                  {startIcon}
-                </div>
-              )}
-
-              <select
-                {...field}
+            <div className="relative mt-2 flex items-center gap-2">
+              <Select
                 value={field.value ?? ""}
-                id={name}
+                onValueChange={(value) => {
+                  field.onChange(value);
+                  if (onChange) {
+                    onChange(value);
+                  }
+                }}
                 disabled={disabled}
-                className={cn(
-                  "peer w-full rounded-10 border border-input bg-white px-4 py-[12px] text-base shadow-sm transition-all h-[46px] appearance-none cursor-pointer",
-                  "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
-                  "disabled:cursor-not-allowed disabled:opacity-50",
-                  errorMessage &&
-                    "border-destructive focus-visible:ring-destructive",
-                  startIcon && "pl-11",
-                  getRightPadding(),
-                )}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                onChange={handleChange}
               >
-                <option value="" disabled hidden>
-                  {placeholder}
-                </option>
-                {options.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-
-              {endIcon && (
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted pointer-events-none z-10">
-                  {endIcon}
-                </div>
-              )}
+                <SelectTrigger
+                  className={cn(
+                    "w-full rounded-10 border border-input bg-white px-4 py-[12px] text-base shadow-sm h-[46px]",
+                    errorMessage && "border-destructive",
+                  )}
+                >
+                  <SelectValue placeholder={placeholder} />
+                </SelectTrigger>
+                <SelectContent>
+                  {options.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
 
               {helperText && !errorMessage && (
-                <div className="absolute right-10 top-1/2 -translate-y-1/2 text-muted pointer-events-none z-10 text-11px whitespace-nowrap">
+                <span className="text-11px text-muted whitespace-nowrap">
                   {helperText}
-                </div>
+                </span>
               )}
             </div>
 

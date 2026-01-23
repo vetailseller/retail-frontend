@@ -3,7 +3,6 @@ import { Control, FieldErrors } from "react-hook-form";
 import { FormInput, FormDatePicker, FormSelect } from "@/components/form";
 import CalendarIcon from "@/components/icons/calendar.svg";
 import PhoneIcon from "@/components/icons/phone.svg";
-import ChevronDownIcon from "@/components/icons/chevron-down.svg";
 import { CreateRecordInput } from "@/common/types";
 import { feeService } from "@/lib/api/fees";
 import { removeNumberComma } from "@/common/utils";
@@ -66,8 +65,6 @@ export function FormInputs({ control, setValue, errors }: FormInputsProps) {
         control={control}
         label="ဆိုင်ခန်း"
         placeholder="ဆိုင်ခန်းရွေးရန်"
-        floatingLabel={true}
-        endIcon={<ChevronDownIcon className="w-4 h-4 text-muted" />}
         helperText="(မရှိပါက ရွေးရန်မလို့)"
         options={branches.map((branch) => ({
           value: branch.Id,
