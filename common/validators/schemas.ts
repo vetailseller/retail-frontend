@@ -67,6 +67,7 @@ const baseRecordSchema = z.object({
       "ဂဏန်းသီးသန့်ဖြစ်ရမည်",
     )
     .refine((val) => Number(val.replace(/,/g, "")) > 0, "အချက်အလက်ဖြည့်ရန် *"),
+  branchId: z.string().optional(),
 });
 
 const requiredRecordSchema = baseRecordSchema.extend({

@@ -63,12 +63,14 @@ export function FormInputs({ control, setValue, errors }: FormInputsProps) {
       <FormSelect
         name="branchId"
         control={control}
-        placeholder="ဆိုင်ခွဲရွေးရန်"
+        label="ဆိုင်ခန်း"
+        placeholder="ဆိုင်ခန်းရွေးရန်"
         helperText="(မရှိပါက ရွေးရန်မလို့)"
         options={branches.map((branch) => ({
           value: branch.Id,
           label: branch.Name,
         }))}
+        required={branches.length > 0}
         error={errors.branchId?.message}
       />
 

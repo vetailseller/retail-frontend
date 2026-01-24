@@ -66,7 +66,7 @@ export function FormSelect<TFieldValues extends FieldValues>({
               </Label>
             )}
 
-            <div className="relative flex items-center gap-2">
+            <div className="relative mt-2 flex items-center gap-2">
               <Select
                 value={field.value ?? ""}
                 onValueChange={(value) => {
@@ -81,13 +81,10 @@ export function FormSelect<TFieldValues extends FieldValues>({
                   className={cn(
                     "w-full rounded-10 border border-input bg-white px-4 py-[12px] text-base shadow-sm h-[46px]",
                     errorMessage && "border-destructive",
-                    field.value && "text-black",
                   )}
+                  onBlur={field.onBlur}
                 >
-                  <SelectValue
-                    placeholder={placeholder}
-                    className="text-14px"
-                  />
+                  <SelectValue placeholder={placeholder} />
                 </SelectTrigger>
                 <SelectContent>
                   {options.map((option) => (
@@ -97,6 +94,12 @@ export function FormSelect<TFieldValues extends FieldValues>({
                   ))}
                 </SelectContent>
               </Select>
+
+              {helperText && !errorMessage && (
+                <span className="text-11px text-muted whitespace-nowrap">
+                  {helperText}
+                </span>
+              )}
             </div>
 
             {/* Error Message */}
