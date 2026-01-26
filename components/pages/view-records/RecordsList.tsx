@@ -93,23 +93,30 @@ export function RecordsList({
             </Accordion>
             
             {/* Infinite scroll trigger element */}
-            <If isTrue={records && records.length > 0}>
-              <div ref={observerRef} className="h-1" />
-            </If>
+            <If 
+              isTrue={!!records && records.length > 0}
+              ifBlock={<div ref={observerRef} className="h-1" />}
+            />
             
             {/* Loading indicator for infinite scroll */}
-            <If isTrue={loading && records && records.length > 0}>
-              <div className="flex justify-center items-center py-4">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-              </div>
-            </If>
+            <If 
+              isTrue={!!loading && !!records && records.length > 0}
+              ifBlock={
+                <div className="flex justify-center items-center py-4">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                </div>
+              }
+            />
             
             {/* No more data indicator */}
-            <If isTrue={!hasMore && !loading && records && records.length > 0}>
-              <div className="text-center py-4 text-muted-light text-sm">
-                စာရင်းမှတ်တမ်းအားလုံးပြီးပါပြီ
-              </div>
-            </If>
+            <If 
+              isTrue={!hasMore && !loading && !!records && records.length > 0}
+              ifBlock={
+                <div className="text-center py-4 text-muted-light text-sm">
+                  စာရင်းမှတ်တမ်းအားလုံးပြီးပါပြီ
+                </div>
+              }
+            />
           </>
         }
       />
