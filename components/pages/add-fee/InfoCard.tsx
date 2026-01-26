@@ -24,7 +24,7 @@ export function InfoCard({ append }: InfoCardProps) {
         variant="secondary"
         className="bg-secondary-light py-3 px-[25px] rounded-full text-13px font-medium"
         onClick={() =>
-          append({ id: `temp-id-${Date.now()}`, fee: 0, from: 0, to: 0 })
+          append({ id: `temp-id-${Date.now()}`, fee: "0", from: "0", to: "0" })
         }
       >
         <PlusIcon />

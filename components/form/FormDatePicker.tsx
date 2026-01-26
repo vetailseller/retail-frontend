@@ -25,7 +25,9 @@ export interface FormDatePickerProps<TFieldValues extends FieldValues> {
   placeholder?: string;
   disabled?: boolean;
   className?: string;
+  btnClassName?: string;
   startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
   floatingLabel?: boolean;
   error?: string;
   dateFormat?: string;
@@ -42,7 +44,9 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
   placeholder = "Pick a date",
   disabled = false,
   className,
+  btnClassName,
   startIcon,
+  endIcon,
   floatingLabel = true,
   error,
   dateFormat = "yyyy-MM-dd",
@@ -120,7 +124,9 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
                         "w-full justify-start text-left font-normal px-3 py-[10px] h-auto rounded-10 border-input bg-white hover:bg-white hover:text-black",
                         !dateValue && "text-muted-foreground",
                         errorMessage && "border-destructive",
-                        startIcon && "pl-10",
+                        startIcon ? "pl-10" : "pl-3",
+                        endIcon ? "pr-10" : "pr-3",
+                        btnClassName,
                       )}
                     >
                       {startIcon && (
@@ -145,37 +151,38 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
                       autoFocus
                     />
                     {(showClearButton || showOkButton || showCancelButton) && (
-                      <div className="flex gap-2 p-3 border-t">
+                      <div className="flex justify-end gap-2 p-3 mb-1">
                         {showClearButton && (
                           <Button
                             type="button"
-                            variant="outline"
-                            size="sm"
+                            variant="plain"
+                            size="plain"
                             onClick={handleClear}
-                            className="flex-1"
+                            className="text-primary text-[15px] hover:text-primary font-inter px-2"
                           >
                             Clear
-                          </Button>
-                        )}
-                        {showCancelButton && (
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="sm"
-                            onClick={handleCancel}
-                            className="flex-1"
-                          >
-                            Cancel
                           </Button>
                         )}
                         {showOkButton && (
                           <Button
                             type="button"
-                            size="sm"
+                            variant="plain"
+                            size="plain"
                             onClick={handleOk}
-                            className="flex-1"
+                            className="text-primary text-[15px] hover:text-primary font-inter px-2"
                           >
-                            Ok
+                            OK
+                          </Button>
+                        )}
+                        {showCancelButton && (
+                          <Button
+                            type="button"
+                            variant="plain"
+                            size="plain"
+                            onClick={handleCancel}
+                            className="text-primary text-[15px] hover:text-primary font-inter px-2"
+                          >
+                            Cancel
                           </Button>
                         )}
                       </div>
@@ -231,11 +238,12 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
                   variant="outline"
                   disabled={disabled}
                   className={cn(
-                    "w-full justify-start text-left font-normal",
+                    "w-full justify-start text-left font-primary font-normal bg-white hover:bg-white focus:bg-white relative",
                     !dateValue && "text-muted-foreground",
-                    errorMessage &&
-                      "border-destructive focus-visible:ring-destructive",
-                    startIcon && "pl-10",
+                    errorMessage && "border-destructive",
+                    startIcon ? "pl-10" : "pl-3",
+                    endIcon ? "pr-10" : "pr-3",
+                    btnClassName,
                   )}
                 >
                   {startIcon && (
@@ -243,7 +251,11 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
                       {startIcon}
                     </div>
                   )}
-                  {!startIcon && <CalendarIcon className="mr-2 h-4 w-4" />}
+                  {endIcon && (
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted">
+                      {endIcon}
+                    </div>
+                  )}
                   {dateValue ? (
                     formatCalendarDate(dateValue)
                   ) : (
@@ -254,42 +266,45 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
               <PopoverContent className="w-auto p-0" align="start">
                 <Calendar
                   mode="single"
+                  captionLayout="dropdown"
+                  navLayout="after"
                   selected={tempDate || dateValue}
                   onSelect={handleDateSelect}
                   autoFocus
                 />
                 {(showClearButton || showOkButton || showCancelButton) && (
-                  <div className="flex gap-2 p-3 border-t">
+                  <div className="flex justify-end gap-2 p-3 mb-1">
                     {showClearButton && (
                       <Button
                         type="button"
-                        variant="outline"
-                        size="sm"
+                        variant="plain"
+                        size="plain"
                         onClick={handleClear}
-                        className="flex-1"
+                        className="text-primary text-[15px] hover:text-primary font-inter px-2"
                       >
                         Clear
-                      </Button>
-                    )}
-                    {showCancelButton && (
-                      <Button
-                        type="button"
-                        variant="outline"
-                        size="sm"
-                        onClick={handleCancel}
-                        className="flex-1"
-                      >
-                        Cancel
                       </Button>
                     )}
                     {showOkButton && (
                       <Button
                         type="button"
-                        size="sm"
+                        variant="plain"
+                        size="plain"
                         onClick={handleOk}
-                        className="flex-1"
+                        className="text-primary text-[15px] hover:text-primary font-inter px-2"
                       >
-                        Ok
+                        OK
+                      </Button>
+                    )}
+                    {showCancelButton && (
+                      <Button
+                        type="button"
+                        variant="plain"
+                        size="plain"
+                        onClick={handleCancel}
+                        className="text-primary text-[15px] hover:text-primary font-inter px-2"
+                      >
+                        Cancel
                       </Button>
                     )}
                   </div>

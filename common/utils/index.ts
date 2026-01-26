@@ -77,6 +77,62 @@ export function formatCalendarDate(value: Date | string) {
     .join("-");
 }
 
+export function getDefaultDateRange() {
+  const now = new Date();
+
+  const fromDate = new Date(now);
+  fromDate.setDate(now.getDate() - 3);
+
+  const formatDate = (date: Date) => date.toISOString().split("T")[0];
+
+  return {
+    from: formatDate(fromDate),
+    to: formatDate(now),
+  };
+}
+
+export function getDateRangeWithOffset(
+  days: number,
+  baseDate: Date = new Date(),
+) {
+  const start = new Date(baseDate);
+  const end = new Date(baseDate);
+
+  if (days < 0) {
+    start.setDate(start.getDate() + days);
+  } else {
+    end.setDate(end.getDate() + days);
+  }
+
+  const formatDate = (date: Date) => date.toISOString().split("T")[0];
+
+  return {
+    from: formatDate(start),
+    to: formatDate(end),
+  };
+}
+
+export function convertCalendarToNumeric(dateStr: string): string {
+  const [day, monthStr, year] = dateStr.split("-");
+
+  const months: Record<string, string> = {
+    Jan: "01",
+    Feb: "02",
+    Mar: "03",
+    Apr: "04",
+    May: "05",
+    Jun: "06",
+    Jul: "07",
+    Aug: "08",
+    Sep: "09",
+    Oct: "10",
+    Nov: "11",
+    Dec: "12",
+  };
+
+  return `${year}-${months[monthStr]}-${day}`;
+}
+
 /**
  * Format date to ISO string for API
  */

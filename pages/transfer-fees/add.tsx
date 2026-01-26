@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { FeeForm } from "@/components/pages/add-fee";
 import { feeService } from "@/lib/api/fees";
-import { CreateFeeInput, Fee, UpdateFeeInput } from "@/common/types";
+import { Fee } from "@/common/types";
 import { ROUTES } from "@/common/constants";
 import Header from "@/components/Header";
-import { InfoCard } from "@/components/pages/add-fee/InfoCard";
+import { FeeForm, InfoCard } from "@/components/pages/add-fee";
 import { useFieldArray, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { feeSchema } from "@/common/validators/schemas";

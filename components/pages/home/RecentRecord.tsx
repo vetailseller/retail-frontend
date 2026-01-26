@@ -2,7 +2,7 @@ import { ROUTES } from "@/common/constants";
 import NoRecordIcon from "@/components/icons/no-record.svg";
 import RightArrowIcon from "@/components/icons/right-arrow.svg";
 import IfElse from "@/components/IfElse";
-import { RecordsList } from "@/components/pages/view-records/RecordsList";
+import { RecordsList } from "@/components/pages/home";
 import { recordService } from "@/lib/api/records";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -79,7 +79,7 @@ export function RecentRecord() {
             </>
           }
           elseBlock={
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col gap-3 items-center justify-center">
               <NoRecordIcon className="text-[#F7F7F7]" />
               <span className="text-[#D7D7D7]">စာရင်းမှတ်တမ်းမရှိသေးပါ</span>
             </div>

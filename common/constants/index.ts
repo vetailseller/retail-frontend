@@ -10,6 +10,7 @@ export const API_ENDPOINTS = {
   },
   RECORDS: {
     LIST: "/transfer-records",
+    REPORTS: "/transfer-records/reports",
     CREATE: "/transfer-records",
   },
   FEES: {

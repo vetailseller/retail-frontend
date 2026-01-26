@@ -4,15 +4,8 @@ import React, { MutableRefObject, useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
-import { recordSchema, createRecordSchema } from "@/common/validators/schemas";
-import {
-  Branch,
-  CreateRecordApiInput,
-  CreateRecordInput,
-  PayType,
-  RecordType,
-  UpdateRecordInput,
-} from "@/common/types";
+import { createRecordSchema } from "@/common/validators/schemas";
+import { Branch, CreateRecordInput, PayType, RecordType } from "@/common/types";
 import FloppyDisk from "@/components/icons/floppy-disk.svg";
 import QuestionMarkIcon from "@/components/icons/question-mark.svg";
 import CheckCircleIcon from "@/components/icons/check-circle.svg";
@@ -20,7 +13,7 @@ import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { ROUTES } from "@/common/constants";
 import { PaymentTabs } from "./PaymentTabs";
 import { FormInputs } from "./FormInputs";
-import { removeNumberComma } from "@/common/utils";
+import { convertCalendarToNumeric, removeNumberComma } from "@/common/utils";
 import { feeService } from "@/lib/api/fees";
 import { branchService } from "@/lib/api/branch";
 import { recordService } from "@/lib/api/records";
@@ -43,6 +36,7 @@ export function RecordForm() {
     handleSubmit,
     control,
     setValue,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<CreateRecordInput>({
     resolver: async (data, context, options) => {
@@ -86,6 +80,7 @@ export function RecordForm() {
         branchId: Number(pendingData.branchId) || undefined,
         amount: Number(removeNumberComma(pendingData.amount)),
         fee: Number(removeNumberComma(pendingData.fee)),
+        date: convertCalendarToNumeric(pendingData.date),
         pay: selectedTab === "pay" ? selectedPay : "other",
         description:
           selectedPay === "other" || selectedTab === "bank"
@@ -97,6 +92,7 @@ export function RecordForm() {
       setShowConfirmDialog(false);
       setPendingData(null);
       setShowSuccessDialog(true);
+      reset();
     } catch (error: any) {
       setIsLoading(false);
       setShowConfirmDialog(false);

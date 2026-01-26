@@ -1,12 +1,8 @@
-/**
- * View Records Page Components Index
- */
+export { Record } from "./Record";
+export type { RecordProps } from "./Record";
 
-export { RecordsTable } from './RecordsTable';
-export type { RecordsTableProps } from './RecordsTable';
+export { RecordsList } from "./RecordsList";
+export type { RecordsListProps } from "./RecordsList";
 
-export { RecordsFilter } from './RecordsFilter';
-export type { RecordsFilterProps } from './RecordsFilter';
-
-export { Pagination } from './Pagination';
-export type { PaginationProps } from './Pagination';
+export { RecordsFilter } from "./RecordsFilter";
+export type { RecordsFilterProps } from "./RecordsFilter";

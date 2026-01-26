@@ -26,7 +26,7 @@ export type RecordType = "pay" | "bank";
 export type PayType = "kbz" | "wave" | "aya" | "uab" | "other";
 
 export interface RecordItem {
-  id: string;
+  id: string | number;
   phoneNo: string;
   amount: number;
   fee: number;
@@ -36,6 +36,11 @@ export interface RecordItem {
   entryPerson: string;
   date: Date;
 }
+
+export type RecordReportQuery = {
+  startDate: string;
+  endDate: string;
+};
 
 export enum RecordStatus {
   PENDING = "pending",

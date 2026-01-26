@@ -8,25 +8,7 @@ import If from "@/components/If";
 import CheckCircleSmIcon from "@/components/icons/check-circle-sm.svg";
 import ThreeLineIcon from "@/components/icons/three-line.svg";
 import { CreateRecordInput, PayType, RecordType } from "@/common/types";
-
-const PAY_OPTIONS = [
-  {
-    value: "kbz",
-    image: "/images/kbz-pay.png",
-  },
-  {
-    value: "wave",
-    image: "/images/wave-pay.png",
-  },
-  {
-    value: "aya",
-    image: "/images/aya-pay.png",
-  },
-  {
-    value: "uab",
-    image: "/images/uab-pay.png",
-  },
-];
+import { PAY_OPTIONS } from "@/common/constants/payment";
 
 export interface PaymentTabsProps {
   selectedTab: RecordType;

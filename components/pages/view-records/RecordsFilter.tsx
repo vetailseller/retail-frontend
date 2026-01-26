@@ -1,124 +1,121 @@
-/**
- * Records Filter Component
- * Filter controls for the records table
- */
+import React, { Dispatch, SetStateAction } from "react";
 
-import React from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
-import { FilterConfig } from '@/common/types';
+import { PAY_OPTIONS } from "@/common/constants/payment";
+import { PayType, RecordItem, RecordReportQuery } from "@/common/types";
+import If from "@/components/If";
+import { Button } from "@/components/ui/button";
+import CheckCircleSmIcon from "@/components/icons/check-circle-sm.svg";
+import Image from "next/image";
+import { FormDatePicker } from "@/components/form";
+import { CalendarIcon } from "lucide-react";
+import { Control, FieldErrors } from "react-hook-form";
 
 export interface RecordsFilterProps {
-  filters: FilterConfig;
-  onFilterChange: (filters: FilterConfig) => void;
-  onReset: () => void;
+  control: Control<RecordReportQuery>;
+  errors: FieldErrors<RecordReportQuery>;
+  selectedPay: PayType | null;
+  setSelectedPay: Dispatch<SetStateAction<PayType | null>>;
 }
 
-export function RecordsFilter({ filters, onFilterChange, onReset }: RecordsFilterProps) {
-  const handleChange = (key: string, value: string) => {
-    onFilterChange({
-      ...filters,
-      [key]: value,
-    });
-  };
-
-  const statusOptions = [
-    { value: '', label: 'All' },
-    { value: 'pending', label: 'Pending' },
-    { value: 'completed', label: 'Completed' },
-    { value: 'cancelled', label: 'Cancelled' },
-  ];
-
-  const categoryOptions = [
-    { value: '', label: 'All' },
-    { value: 'sale', label: 'Sale' },
-    { value: 'purchase', label: 'Purchase' },
-    { value: 'service', label: 'Service' },
-    { value: 'return', label: 'Return' },
-    { value: 'other', label: 'Other' },
-  ];
-
+export function RecordsFilter({
+  control,
+  errors,
+  selectedPay,
+  setSelectedPay,
+}: RecordsFilterProps) {
   return (
-    <Card>
-      <CardContent className="pt-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="space-y-2">
-            <Label htmlFor="search">Search</Label>
-            <Input
-              id="search"
-              placeholder="Search records..."
-              value={filters.search || ''}
-              onChange={(e) => handleChange('search', e.target.value)}
+    <div className="py-[15px] px-5 bg-white flex flex-col gap-5">
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center">
+        <FormDatePicker
+          name="startDate"
+          control={control}
+          placeholder="ရက်စွဲ"
+          endIcon={<CalendarIcon className="h-4 w-4 mb-1" />}
+          floatingLabel={false}
+          error={errors.startDate?.message}
+          showOkButton
+          showCancelButton
+          showClearButton
+          className="text-primary hover:text-primary"
+          btnClassName="hover:text-primary"
+        />
+        <span className="px-6 text-muted font-primary">မှ</span>
+        <FormDatePicker
+          name="endDate"
+          control={control}
+          placeholder="ရက်စွဲ"
+          endIcon={<CalendarIcon className="h-4 w-4 mb-1" />}
+          floatingLabel={false}
+          error={errors.endDate?.message}
+          showOkButton
+          showCancelButton
+          showClearButton
+          className="text-primary hover:text-primary"
+          btnClassName="hover:text-primary"
+        />
+      </div>
+      <div>
+        <div className="flex items-center gap-[12px]">
+          <Button
+            type="button"
+            variant="plain"
+            size="plain"
+            onClick={() => setSelectedPay(null)}
+            className="relative"
+          >
+            <span className="px-[14px] py-[9.5px] text-center bg-primary text-white rounded-5 text-11px">
+              All
+            </span>
+            <If
+              isTrue={selectedPay === null}
+              ifBlock={
+                <CheckCircleSmIcon className="w-[5px]! h-[5px]! absolute -right-2 -top-2" />
+              }
             />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="status">Status</Label>
-            <select
-              id="status"
-              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              value={filters.status || ''}
-              onChange={(e) => handleChange('status', e.target.value)}
-            >
-              {statusOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="category">Category</Label>
-            <select
-              id="category"
-              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              value={filters.category || ''}
-              onChange={(e) => handleChange('category', e.target.value)}
-            >
-              {categoryOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="flex items-end">
+          </Button>
+          {PAY_OPTIONS.map((pay) => (
             <Button
-              variant="outline"
-              className="w-full"
-              onClick={onReset}
+              type="button"
+              variant="plain"
+              size="plain"
+              onClick={() => setSelectedPay(pay.value as PayType)}
+              key={pay.value}
+              className="relative"
             >
-              Reset Filters
+              <Image
+                src={pay.image}
+                width={43.02}
+                height={43.02}
+                alt={pay.value}
+                className="rounded-5"
+              />
+              <If
+                isTrue={selectedPay === (pay.value as PayType)}
+                ifBlock={
+                  <CheckCircleSmIcon className="w-[5px]! h-[5px]! absolute -right-2 -top-2" />
+                }
+              />
             </Button>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-          <div className="space-y-2">
-            <Label htmlFor="dateFrom">Date From</Label>
-            <Input
-              id="dateFrom"
-              type="date"
-              value={filters.dateFrom || ''}
-              onChange={(e) => handleChange('dateFrom', e.target.value)}
+          ))}
+          <Button
+            type="button"
+            variant="plain"
+            size="plain"
+            onClick={() => setSelectedPay("other")}
+            className="relative"
+          >
+            <span className="px-[5.1px] py-[10px] text-center bg-primary text-white rounded-5 text-11px">
+              အခြား
+            </span>
+            <If
+              isTrue={selectedPay === "other"}
+              ifBlock={
+                <CheckCircleSmIcon className="w-[5px]! h-[5px]! absolute -right-2 -top-2" />
+              }
             />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="dateTo">Date To</Label>
-            <Input
-              id="dateTo"
-              type="date"
-              value={filters.dateTo || ''}
-              onChange={(e) => handleChange('dateTo', e.target.value)}
-            />
-          </div>
+          </Button>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
