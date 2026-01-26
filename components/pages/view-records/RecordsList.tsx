@@ -94,13 +94,13 @@ export function RecordsList({
             
             {/* Infinite scroll trigger element */}
             <If 
-              isTrue={(records?.length ?? 0) > 0}
+              isTrue={!!records?.length}
               ifBlock={<div ref={observerRef} className="h-1" />}
             />
             
             {/* Loading indicator for infinite scroll */}
             <If 
-              isTrue={!!loading && (records?.length ?? 0) > 0}
+              isTrue={!!loading && !!records?.length}
               ifBlock={
                 <div className="flex justify-center items-center py-4">
                   <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
@@ -110,7 +110,7 @@ export function RecordsList({
             
             {/* No more data indicator */}
             <If 
-              isTrue={hasMore === false && !loading && (records?.length ?? 0) > 0}
+              isTrue={!hasMore && !loading && !!records?.length}
               ifBlock={
                 <div className="text-center py-4 text-muted-light text-sm">
                   စာရင်းမှတ်တမ်းအားလုံးပြီးပါပြီ
