@@ -10,7 +10,6 @@ A Next.js-based retail management system for tracking payment transfers, managin
 - [Core Concepts](#core-concepts)
 - [Development Workflow](#development-workflow)
 - [API Integration](#api-integration)
-- [State Management](#state-management)
 - [Form Validation](#form-validation)
 - [Styling System](#styling-system)
 - [Component Patterns](#component-patterns)
@@ -25,9 +24,6 @@ A Next.js-based retail management system for tracking payment transfers, managin
 - **Next.js 14.0.4** - React framework with Pages Router (file-based routing)
 - **React 18.2.0** - UI library
 - **TypeScript 5.3.3** - Type-safe JavaScript
-
-### State Management
-- **Zustand 4.4.7** - Lightweight state management (used for auth state)
 
 ### API & Data Fetching
 - **Axios 1.13.2** - HTTP client with interceptors for authentication
@@ -70,8 +66,6 @@ This application follows a **layered architecture** with clear separation of con
 │    Shared Components (UI/Form)      │  ← Reusable components
 ├─────────────────────────────────────┤
 │      API Service Layer              │  ← Axios + service classes
-├─────────────────────────────────────┤
-│    State Management (Zustand)       │  ← Global state
 ├─────────────────────────────────────┤
 │  Common (Types/Utils/Constants)     │  ← Shared code
 └─────────────────────────────────────┘
@@ -192,7 +186,7 @@ retail-frontend/
 │   │   └── total.ts          # Total API service
 │   │
 │   ├── store/
-│   │   └── authStore.ts      # Zustand auth store
+│   │   └── authStore.ts      # Authentication store
 │   │
 │   ├── fonts.ts              # Next.js font loading
 │   └── utils.ts              # cn() utility
@@ -606,73 +600,6 @@ try {
   const apiError = error as ApiError;
   toast.error(apiError.message || "An error occurred");
 }
-```
-
----
-
-## State Management
-
-### Zustand Store
-
-The application uses **Zustand** for lightweight state management, currently only for authentication:
-
-```typescript
-// lib/store/authStore.ts
-interface AuthState {
-  checkAuth: () => boolean;
-}
-
-export const useAuthStore = create<AuthState>((set, get) => ({
-  checkAuth: () => {
-    const hasToken = tokenUtils.hasToken();
-    return hasToken;
-  },
-}));
-```
-
-### Usage in Components
-
-```typescript
-import { useAuthStore } from "@/lib/store/authStore";
-
-function MyComponent() {
-  const checkAuth = useAuthStore((state) => state.checkAuth);
-  
-  useEffect(() => {
-    const isAuthenticated = checkAuth();
-    if (!isAuthenticated) {
-      // Handle unauthenticated state
-    }
-  }, [checkAuth]);
-}
-```
-
-### Adding New Stores
-
-To add a new Zustand store:
-
-1. Create store file in `lib/store/`:
-```typescript
-// lib/store/myStore.ts
-import { create } from "zustand";
-
-interface MyState {
-  count: number;
-  increment: () => void;
-  decrement: () => void;
-}
-
-export const useMyStore = create<MyState>((set) => ({
-  count: 0,
-  increment: () => set((state) => ({ count: state.count + 1 })),
-  decrement: () => set((state) => ({ count: state.count - 1 })),
-}));
-```
-
-2. Use in component:
-```typescript
-const count = useMyStore((state) => state.count);
-const increment = useMyStore((state) => state.increment);
 ```
 
 ---
@@ -1403,7 +1330,6 @@ npm run build
 - [Radix UI Documentation](https://www.radix-ui.com/docs/primitives)
 - [React Hook Form Documentation](https://react-hook-form.com/)
 - [Zod Documentation](https://zod.dev/)
-- [Zustand Documentation](https://github.com/pmndrs/zustand)
 
 ---
 
