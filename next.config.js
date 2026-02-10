@@ -20,7 +20,7 @@ const nextConfig = {
     if (!dev) {
       config.plugins.push(
         new NextFederationPlugin({
-          name: "vetailPOS",
+          name: "retail",
           filename: "static/chunks/remoteEntry.js",
           remotes: productionRemotes(isServer),
           exposes,
@@ -47,4 +47,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
