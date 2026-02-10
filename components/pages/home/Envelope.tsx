@@ -24,11 +24,8 @@ export function Envelope() {
           setTotal({ total: 0, fee: 0 });
         }
       })
-      .catch((error) => {
+      .catch((_error) => {
         setTotal({ total: 0, fee: 0 });
-        toast.error("Failed to load total data", {
-          id: "fetch-total-error",
-        });
       });
   }, []);
 
