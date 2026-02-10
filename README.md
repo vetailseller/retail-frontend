@@ -3,6 +3,7 @@
 A Next.js-based retail management system for tracking payment transfers, managing fees, and generating reports. Built with TypeScript, Tailwind CSS, and modern React patterns.
 
 ## Table of Contents
+
 - [Tech Stack](#tech-stack)
 - [Project Architecture](#project-architecture)
 - [Getting Started](#getting-started)
@@ -21,32 +22,38 @@ A Next.js-based retail management system for tracking payment transfers, managin
 ## Tech Stack
 
 ### Core Framework
+
 - **Next.js 14.0.4** - React framework with Pages Router (file-based routing)
 - **React 18.2.0** - UI library
 - **TypeScript 5.3.3** - Type-safe JavaScript
 
 ### API & Data Fetching
+
 - **Axios 1.13.2** - HTTP client with interceptors for authentication
 - **cookies-next 4.1.1** - Client-side cookie management for auth tokens
 
 ### Forms & Validation
+
 - **React Hook Form 7.49.2** - Performant form state management
 - **Zod 4.3.5** - TypeScript-first schema validation
 - **@hookform/resolvers 5.2.2** - Zod integration with React Hook Form
 
 ### UI Components
+
 - **Radix UI** - Headless, accessible UI primitives:
   - Dialog, Select, Popover, Accordion, Tabs, Label
 - **Lucide React 0.294.0** - Icon library
 - **Sonner 2.0.7** - Toast notifications
 
 ### Styling
+
 - **Tailwind CSS 3.4.14** - Utility-first CSS framework
 - **tailwindcss-animate 1.0.7** - Animation utilities
 - **class-variance-authority 0.7.1** - Component variants
 - **clsx 2.1.1** + **tailwind-merge 2.6.0** - Conditional class merging
 
 ### Utilities
+
 - **date-fns 4.1.0** - Date manipulation
 - **use-debounce 10.1.0** - Input debouncing
 - **@svgr/webpack 8.1.0** - Import SVGs as React components
@@ -85,6 +92,7 @@ This application follows a **layered architecture** with clear separation of con
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js 18.x or higher
 - npm or yarn package manager
 - Access to backend API
@@ -92,12 +100,14 @@ This application follows a **layered architecture** with clear separation of con
 ### Installation
 
 1. **Clone the repository**
+
 ```bash
 git clone <repository-url>
 cd retail-frontend
 ```
 
 2. **Install dependencies**
+
 ```bash
 npm install
 ```
@@ -112,6 +122,7 @@ cp .env.example .env.local
 ```
 
 Edit `.env.local`:
+
 ```env
 NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api
 ```
@@ -119,6 +130,7 @@ NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api
 **Important**: The `NEXT_PUBLIC_` prefix is required for client-side environment variables in Next.js.
 
 4. **Run Development Server**
+
 ```bash
 npm run dev
 ```
@@ -240,11 +252,12 @@ This project uses Next.js **Pages Router** (not the newer App Router). Routes ar
 ```
 
 **Navigation:**
+
 ```typescript
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 const router = useRouter();
-router.push('/transfer-records/add');
+router.push("/transfer-records/add");
 ```
 
 ### 2. Authentication Flow
@@ -253,19 +266,20 @@ Authentication is handled via **JWT tokens stored in cookies**:
 
 ```typescript
 // 1. Token is retrieved from cookies
-const token = getCookie('authToken');
+const token = getCookie("authToken");
 
 // 2. Axios interceptor adds token to requests
 config.headers.Authorization = `Bearer ${token}`;
 
 // 3. 401 responses clear token and redirect
 if (error.response?.status === 401) {
-  deleteCookie('authToken');
-  window.location.href = '/ssh';
+  deleteCookie("authToken");
+  window.location.href = "/ssh";
 }
 ```
 
-**Auth Check in _app.tsx:**
+**Auth Check in \_app.tsx:**
+
 ```typescript
 useEffect(() => {
   const hasToken = checkAuth();
@@ -285,6 +299,7 @@ Components are organized by **type and feature**:
 - **`components/pages/`** - Feature-specific components (organized by page)
 
 **Example: Form Component Hierarchy**
+
 ```
 FormInput (form wrapper with validation)
   └── Input (UI primitive from shadcn)
@@ -298,6 +313,7 @@ FormInput (form wrapper with validation)
 ### Adding a New Page
 
 1. **Create page file** in `pages/` directory:
+
 ```typescript
 // pages/my-feature/index.tsx
 import { Header } from "@/components/Header";
@@ -315,6 +331,7 @@ export default function MyFeaturePage() {
 ```
 
 2. **Add route constant** in `common/constants/index.ts`:
+
 ```typescript
 export const ROUTES = {
   // ... existing routes
@@ -323,6 +340,7 @@ export const ROUTES = {
 ```
 
 3. **Create page components** in `components/pages/my-feature/`:
+
 ```typescript
 // components/pages/my-feature/MyComponent.tsx
 export function MyComponent() {
@@ -333,6 +351,7 @@ export function MyComponent() {
 ### Adding a New API Endpoint
 
 1. **Add endpoint constant** in `common/constants/index.ts`:
+
 ```typescript
 export const API_ENDPOINTS = {
   MY_FEATURE: {
@@ -344,6 +363,7 @@ export const API_ENDPOINTS = {
 ```
 
 2. **Define TypeScript types** in `common/types/index.ts`:
+
 ```typescript
 export interface MyFeatureItem {
   id: string;
@@ -353,6 +373,7 @@ export interface MyFeatureItem {
 ```
 
 3. **Create service** in `lib/api/my-feature.ts`:
+
 ```typescript
 import { api } from "./client";
 import { API_ENDPOINTS } from "@/common/constants";
@@ -370,6 +391,7 @@ export const myFeatureService = {
 ```
 
 4. **Use in component**:
+
 ```typescript
 import { myFeatureService } from "@/lib/api/my-feature";
 import { useState, useEffect } from "react";
@@ -396,10 +418,12 @@ export function MyFeatureList() {
 ### Adding a New Form
 
 1. **Define Zod schema** in `common/validators/index.ts`:
+
 ```typescript
 export const myFormSchema = z.object({
   name: z.string().min(1, "Name is required"),
-  amount: z.string()
+  amount: z
+    .string()
     .refine((val) => !isNaN(Number(removeNumberComma(val))), "Must be a number")
     .refine((val) => Number(removeNumberComma(val)) > 0, "Must be positive"),
 });
@@ -408,6 +432,7 @@ export type MyFormData = z.infer<typeof myFormSchema>;
 ```
 
 2. **Create form component**:
+
 ```typescript
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -441,7 +466,7 @@ export function MyForm() {
         label="Name"
         placeholder="Enter name"
       />
-      
+
       <FormInput
         name="amount"
         control={control}
@@ -481,7 +506,7 @@ Automatically adds Bearer token to all requests:
 
 ```typescript
 apiClient.interceptors.request.use((config) => {
-  const token = getCookie('authToken');
+  const token = getCookie("authToken");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -498,11 +523,11 @@ apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      deleteCookie('authToken');
-      window.location.href = '/ssh';
+      deleteCookie("authToken");
+      window.location.href = "/ssh";
     }
     return Promise.reject(error);
-  }
+  },
 );
 ```
 
@@ -534,7 +559,7 @@ export const recordService = {
       limit: String(params.limit),
     });
     const url = `${API_ENDPOINTS.RECORDS.LIST}?${queryParams.toString()}`;
-    
+
     return api.get<{
       transferRecords: RecordItem[];
       pagination: Pagination;
@@ -566,6 +591,7 @@ async generateReport(body: {
 ```
 
 Usage:
+
 ```typescript
 const response = await recordService.generateReport({
   startDate: "2024-01-01",
@@ -592,6 +618,7 @@ interface ApiError {
 ```
 
 Usage in components:
+
 ```typescript
 try {
   await recordService.create(data);
@@ -611,6 +638,7 @@ try {
 All validation schemas are in `common/validators/index.ts`.
 
 #### Basic Schema
+
 ```typescript
 export const mySchema = z.object({
   email: z.string().email("Invalid email"),
@@ -619,6 +647,7 @@ export const mySchema = z.object({
 ```
 
 #### Conditional Validation
+
 ```typescript
 export const createRecordSchema = ({
   selectedPay,
@@ -629,9 +658,10 @@ export const createRecordSchema = ({
   selectedTab?: string;
   hasBranches?: boolean;
 }) => {
-  let schema = selectedPay === "other" || selectedTab === "bank"
-    ? requiredRecordSchema  // Description required
-    : baseRecordSchema;     // Description optional
+  let schema =
+    selectedPay === "other" || selectedTab === "bank"
+      ? requiredRecordSchema // Description required
+      : baseRecordSchema; // Description optional
 
   if (hasBranches) {
     return schema.extend({
@@ -644,6 +674,7 @@ export const createRecordSchema = ({
 ```
 
 #### Number Validation with Comma Formatting
+
 ```typescript
 amount: z
   .string("Required")
@@ -658,24 +689,27 @@ amount: z
 ```
 
 #### Cross-Field Validation
+
 ```typescript
 export const feeSchema = z.object({
   fees: z.array(
-    z.object({
-      from: z.string().refine(/* validation */),
-      to: z.string().refine(/* validation */),
-      fee: z.string().refine(/* validation */),
-    }).refine(
-      (data) => {
-        const fromVal = Number(removeNumberComma(data.from));
-        const toVal = Number(removeNumberComma(data.to));
-        return fromVal < toVal;
-      },
-      {
-        message: "From must be less than To",
-        path: ["from"],
-      }
-    )
+    z
+      .object({
+        from: z.string().refine(/* validation */),
+        to: z.string().refine(/* validation */),
+        fee: z.string().refine(/* validation */),
+      })
+      .refine(
+        (data) => {
+          const fromVal = Number(removeNumberComma(data.from));
+          const toVal = Number(removeNumberComma(data.to));
+          return fromVal < toVal;
+        },
+        {
+          message: "From must be less than To",
+          path: ["from"],
+        },
+      ),
   ),
 });
 ```
@@ -730,6 +764,7 @@ const { control, handleSubmit, watch, formState } = useForm<MyFormData>({
 The project uses a **custom Tailwind theme** with design tokens as CSS variables.
 
 #### Custom Font Sizes
+
 ```javascript
 // tailwind.config.js
 fontSize: {
@@ -742,11 +777,13 @@ fontSize: {
 ```
 
 Usage:
+
 ```typescript
 <p className="text-14px">Text content</p>
 ```
 
 #### Custom Border Radius
+
 ```javascript
 borderRadius: {
   '5': 'var(--radius-5)',   // 5px
@@ -759,6 +796,7 @@ borderRadius: {
 ```
 
 Usage:
+
 ```typescript
 <div className="rounded-10">Card</div>
 ```
@@ -778,6 +816,7 @@ Colors are defined as CSS variables in `styles/globals.css`:
 ```
 
 Usage:
+
 ```typescript
 <button className="bg-primary text-primary-foreground">
   Click me
@@ -807,6 +846,7 @@ export const inter = Inter({
 ```
 
 Applied in `_app.tsx`:
+
 ```typescript
 <div className={cn(
   notoSansMyanmar.variable,
@@ -816,6 +856,7 @@ Applied in `_app.tsx`:
 ```
 
 Usage in Tailwind:
+
 ```typescript
 <p className="font-primary">Primary font (Noto Sans Myanmar)</p>
 <p className="font-secondary">Secondary font (Pyidaungsu)</p>
@@ -837,6 +878,7 @@ import { cn } from "@/lib/utils";
 ```
 
 The `cn()` function combines `clsx` and `tailwind-merge` to handle:
+
 - Conditional classes
 - Array of classes
 - Object notation
@@ -849,6 +891,7 @@ The `cn()` function combines `clsx` and `tailwind-merge` to handle:
 ### Conditional Rendering Components
 
 #### If Component
+
 ```typescript
 import { If } from "@/components/If";
 
@@ -858,6 +901,7 @@ import { If } from "@/components/If";
 ```
 
 #### IfElse Component
+
 ```typescript
 import { IfElse } from "@/components/IfElse";
 
@@ -874,6 +918,7 @@ import { IfElse } from "@/components/IfElse";
 All form components are wrappers around React Hook Form's Controller:
 
 #### FormInput
+
 ```typescript
 <FormInput
   name="amount"
@@ -890,6 +935,7 @@ All form components are wrappers around React Hook Form's Controller:
 ```
 
 Features:
+
 - Automatic validation error display
 - Currency formatting (comma-separated thousands)
 - Floating label animation
@@ -897,6 +943,7 @@ Features:
 - Integration with react-hook-form
 
 #### FormSelect
+
 ```typescript
 <FormSelect
   name="branch"
@@ -912,6 +959,7 @@ Features:
 ```
 
 #### FormDatePicker
+
 ```typescript
 <FormDatePicker
   name="date"
@@ -925,6 +973,7 @@ Features:
 ### UI Components (Radix + Shadcn)
 
 #### Button
+
 ```typescript
 import { Button } from "@/components/ui/button";
 
@@ -938,6 +987,7 @@ import { Button } from "@/components/ui/button";
 ```
 
 #### Dialog
+
 ```typescript
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
@@ -952,6 +1002,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 ```
 
 #### Tabs
+
 ```typescript
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
@@ -966,6 +1017,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 ```
 
 #### Toast Notifications
+
 ```typescript
 import { toast } from "sonner";
 
@@ -982,6 +1034,7 @@ toast.warning("Warning message");
 ### 1. TypeScript Usage
 
 **✅ Always define types for:**
+
 - API responses
 - Form data
 - Component props
@@ -1046,10 +1099,12 @@ Keep validation logic in Zod schemas:
 ```typescript
 // Good - validation in schema
 const schema = z.object({
-  amount: z.string().refine(
-    (val) => Number(removeNumberComma(val)) > 0,
-    "Amount must be positive"
-  ),
+  amount: z
+    .string()
+    .refine(
+      (val) => Number(removeNumberComma(val)) > 0,
+      "Amount must be positive",
+    ),
 });
 
 // Bad - validation in component
@@ -1191,6 +1246,7 @@ export function MyComponent({
 1. **Check Network Tab** in browser DevTools
 2. **Check Console** for axios errors
 3. **Verify token** is being sent:
+
 ```typescript
 import { tokenUtils } from "@/lib/api/client";
 console.log("Has token:", tokenUtils.hasToken());
@@ -1198,9 +1254,10 @@ console.log("Token value:", tokenUtils.getToken());
 ```
 
 4. **Test endpoint directly**:
+
 ```typescript
 import { api } from "@/lib/api/client";
-api.get('/endpoint').then(console.log).catch(console.error);
+api.get("/endpoint").then(console.log).catch(console.error);
 ```
 
 ### Working with Myanmar Language
@@ -1215,6 +1272,7 @@ phoneNo: z
 ```
 
 Fonts are configured to support Myanmar script:
+
 - `font-primary` - Noto Sans Myanmar
 - `font-secondary` - Pyidaungsu (local font)
 
@@ -1233,6 +1291,7 @@ removeNumberComma("1,234,567"); // "1234567"
 ```
 
 FormInput component handles this automatically with `isCurrency` prop:
+
 ```typescript
 <FormInput
   name="amount"
@@ -1256,6 +1315,7 @@ parseISO("2024-01-30");
 ```
 
 FormDatePicker handles date string conversion:
+
 ```typescript
 <FormDatePicker
   name="date"
@@ -1347,3 +1407,4 @@ When contributing to this project:
 ## License
 
 [License information here]
+..
