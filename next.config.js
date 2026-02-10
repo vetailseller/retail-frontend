@@ -22,7 +22,6 @@ const nextConfig = {
         new NextFederationPlugin({
           name: "retail",
           filename: "static/chunks/remoteEntry.js",
-          remotes: productionRemotes(isServer),
           exposes,
           shared: {
             sonner: {
