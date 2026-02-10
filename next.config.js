@@ -17,7 +17,7 @@ const nextConfig = {
       use: ["@svgr/webpack"],
     });
 
-    if (!dev && !isServer) {
+    if (!dev) {
       config.plugins.push(
         new NextFederationPlugin({
           name: "retail",
