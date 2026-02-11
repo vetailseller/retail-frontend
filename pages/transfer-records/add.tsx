@@ -6,9 +6,9 @@ import { InfoCard, RecordForm } from "@/components/pages/add-record";
 
 export default function AddRecord() {
   return (
-    <div className="h-screen font-primary flex flex-col">
+    <div className="rt-h-screen rt-font-primary rt-flex rt-flex-col">
       <Header navLink={ROUTES.HOME} navLabel="စာရင်းမှတ်မည်" />
-      <main className="w-full pt-4 flex-1 flex flex-col">
+      <main className="rt-w-full rt-pt-4 rt-flex-1 rt-flex rt-flex-col">
         <InfoCard />
         <RecordForm />
       </main>

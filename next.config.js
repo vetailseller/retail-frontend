@@ -6,6 +6,7 @@ const exposes = {
   "./AddTransferFess": "./pages/transfer-fees/add.tsx",
   "./AddTransferRecords": "./pages/transfer-records/add.tsx",
   "./ViewTransferRecords": "./pages/transfer-records/view.tsx",
+  "./MFProvider": "./providers/MFProvider.tsx",
   "./pages-map": "./pages-map.ts",
 };
 const nextConfig = {

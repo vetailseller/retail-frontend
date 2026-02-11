@@ -8,7 +8,7 @@
     "css": "styles/globals.css",
     "baseColor": "zinc",
     "cssVariables": true,
-    "prefix": ""
+    "prefix": "rt-"
   },
   "aliases": {
     "components": "@/components",

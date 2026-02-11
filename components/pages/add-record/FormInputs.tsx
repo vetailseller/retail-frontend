@@ -25,13 +25,13 @@ export function FormInputs({
   setCurrentAmount,
 }: FormInputsProps) {
   return (
-    <div className="px-5 flex flex-col gap-7">
+    <div className="rt-px-5 rt-flex rt-flex-col rt-gap-7">
       <FormInput
         name="phoneNo"
         control={control}
         label="ဖုန်းနံပါတ်"
         placeholder="ဖုန်းနံပါတ်ထည့်ပါ"
-        startIcon={<PhoneIcon className="w-[19px] h-[19px] text-muted" />}
+        startIcon={<PhoneIcon className="rt-w-[19px] rt-h-[19px] rt-text-muted" />}
         floatingLabel={true}
         error={errors.phoneNo?.message}
       />
@@ -55,18 +55,18 @@ export function FormInputs({
         control={control}
         label="ရက်စွဲ"
         placeholder="ရက်စွဲထည့်ပါ"
-        startIcon={<CalendarIcon className="h-4 w-4 mb-1" />}
+        startIcon={<CalendarIcon className="rt-h-4 rt-w-4 rt-mb-1" />}
         floatingLabel={true}
         error={errors.date?.message}
       />
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="rt-grid rt-grid-cols-2 rt-gap-4">
         <FormInput
           name="amount"
           control={control}
           label="ငွေသွင်း/ထုတ်ပမာဏ"
           placeholder="ငွေသွင်း/ထုတ်ပမာဏထည့်ပါ"
-          endIcon={<span className="font-inter text-14px text-muted">Ks</span>}
+          endIcon={<span className="rt-font-inter rt-text-14px rt-text-muted">Ks</span>}
           floatingLabel={false}
           isCurrency
           error={errors.amount?.message}
@@ -80,7 +80,7 @@ export function FormInputs({
           control={control}
           label="လွှဲခ/အမြတ်"
           placeholder="လွှဲခ/အမြတ်ထည့်ပါ"
-          endIcon={<span className="font-inter text-14px text-muted">Ks</span>}
+          endIcon={<span className="rt-font-inter rt-text-14px rt-text-muted">Ks</span>}
           floatingLabel={false}
           isCurrency
           error={errors.fee?.message}

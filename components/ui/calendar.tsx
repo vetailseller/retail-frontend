@@ -27,7 +27,7 @@ function Calendar({
       onMonthChange={setMonth}
       month={month}
       reverseYears
-      className={cn("p-3", className)}
+      className={cn("rt-p-3", className)}
       classNames={{
         selected: `${getDefaultClassNames().selected} bg-[#DCEBFF]`,
         day: `${

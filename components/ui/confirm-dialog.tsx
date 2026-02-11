@@ -58,51 +58,51 @@ export function ConfirmDialog({
       <DialogPortal>
         <DialogOverlay />
         <DialogPrimitive.Content
-          className="fixed left-[50%] top-[50%] z-50 w-full max-w-[335px] translate-x-[-50%] translate-y-[-50%] gap-3 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] rounded-20 flex flex-col items-center justify-center text-center font-primary"
+          className="rt-fixed rt-left-[50%] rt-top-[50%] rt-z-50 rt-w-full rt-max-w-[335px] rt-translate-x-[-50%] rt-translate-y-[-50%] rt-gap-3 rt-border rt-bg-background rt-p-6 rt-shadow-lg rt-duration-200 data-[state=open]:rt-animate-in data-[state=closed]:rt-animate-out data-[state=closed]:rt-fade-out-0 data-[state=open]:rt-fade-in-0 data-[state=closed]:rt-zoom-out-95 data-[state=open]:rt-zoom-in-95 data-[state=closed]:rt-slide-out-to-left-1/2 data-[state=closed]:rt-slide-out-to-top-[48%] data-[state=open]:rt-slide-in-from-left-1/2 data-[state=open]:rt-slide-in-from-top-[48%] rt-rounded-20 rt-flex rt-flex-col rt-items-center rt-justify-center rt-text-center rt-font-primary"
           onInteractOutside={(e) => e.preventDefault()}
           onEscapeKeyDown={(e) => e.preventDefault()}
         >
           {showCloseButton && (
-            <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none z-10">
-              <X className="h-4 w-4" />
-              <span className="sr-only">Close</span>
+            <DialogPrimitive.Close className="rt-absolute rt-right-4 rt-top-4 rt-rounded-sm rt-opacity-70 rt-ring-offset-background rt-transition-opacity hover:rt-opacity-100 focus:rt-outline-none focus:rt-ring-2 focus:rt-ring-ring focus:rt-ring-offset-2 disabled:rt-pointer-events-none rt-z-10">
+              <X className="rt-h-4 rt-w-4" />
+              <span className="rt-sr-only">Close</span>
             </DialogPrimitive.Close>
           )}
 
           <DialogHeader
             className={cn(
-              "flex flex-col items-center space-y-3 text-center w-full",
-              showCloseButton && "mt-3",
-              !subtitle ? "mb-3" : "mb-2",
+              "rt-flex rt-flex-col rt-items-center rt-space-y-3 rt-text-center rt-w-full",
+              showCloseButton && "rt-mt-3",
+              !subtitle ? "rt-mb-3" : "rt-mb-2",
             )}
           >
             {icon && (
               <div
                 className={cn(
-                  "flex justify-center",
-                  subtitle ? "mb-3" : "mb-5",
+                  "rt-flex rt-justify-center",
+                  subtitle ? "rt-mb-3" : "rt-mb-5",
                 )}
               >
                 {icon}
               </div>
             )}
-            <DialogTitle className="text-center text-16px font-semibold">
+            <DialogTitle className="rt-text-center rt-text-16px rt-font-semibold">
               {title}
             </DialogTitle>
             {subtitle && (
-              <DialogDescription className="text-12px text-center text-muted">
+              <DialogDescription className="rt-text-12px rt-text-center rt-text-muted">
                 {subtitle}
               </DialogDescription>
             )}
           </DialogHeader>
 
-          <DialogFooter className="flex flex-col sm:flex-col gap-2 w-full items-center justify-center mt-1 font-primary">
+          <DialogFooter className="rt-flex rt-flex-col sm:rt-flex-col rt-gap-2 rt-w-full rt-items-center rt-justify-center rt-mt-1 rt-font-primary">
             <Button
               onClick={onPrimaryClick}
               disabled={primaryButtonDisabled}
-              className="w-full text-white"
+              className="rt-w-full rt-text-white"
             >
-              <span className="text-16px w-full font-medium">
+              <span className="rt-text-16px rt-w-full rt-font-medium">
                 {primaryButtonText}
               </span>
             </Button>
@@ -117,7 +117,7 @@ export function ConfirmDialog({
                       asChild
                       variant="plain"
                       size="plain"
-                      className="w-full py-[11px] px-[77px] text-15px hover:text-gray-700"
+                      className="rt-w-full rt-py-[11px] rt-px-[77px] rt-text-15px hover:rt-text-gray-700"
                     >
                       <Link href={secondaryButtonHref!}>
                         {secondaryButtonText}
@@ -128,7 +128,7 @@ export function ConfirmDialog({
                     <Button
                       onClick={handleSecondaryClick}
                       variant="plain"
-                      className="w-full m-0 font-normal hover:text-gray-700"
+                      className="rt-w-full rt-m-0 rt-font-normal hover:rt-text-gray-700"
                     >
                       {secondaryButtonText}
                     </Button>

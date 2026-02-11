@@ -1,16 +1,14 @@
-import { RecordItem } from "@/common/types";
-
 import { formatCalendarDate, formatCurrency } from "@/common/utils";
+import NoRecordIcon from "@/components/icons/no-record.svg";
+import IfElse from "@/components/IfElse";
+import { ReportRecord } from "@/components/pages/view-records";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import NoRecordIcon from "@/components/icons/no-record.svg";
-import { ReportRecord } from "@/components/pages/view-records";
 import { transferRecordReport } from "@/lib/api/records";
-import IfElse from "@/components/IfElse";
 import { useEffect, useState } from "react";
 
 export interface RecordsListProps {
@@ -34,14 +32,14 @@ export function RecordsList({
   }, [records]);
 
   return (
-    <div className="px-5 pt-[17px] flex-1">
+    <div className="rt-px-5 rt-pt-[17px] rt-flex-1">
       <IfElse
         isTrue={records?.length === 0 && !loading}
         ifBlock={
-          <div className="h-full">
-            <div className="flex flex-col gap-3 items-center justify-center h-full">
-              <NoRecordIcon className="text-[#EAEAEA] mt-3!" />
-              <span className="text-[#D7D7D7]">စာရင်းမှတ်တမ်းမရှိသေးပါ</span>
+          <div className="rt-h-full">
+            <div className="rt-flex rt-flex-col rt-gap-3 rt-items-center rt-justify-center rt-h-full">
+              <NoRecordIcon className="rt-text-[#EAEAEA] rt-mt-3!" />
+              <span className="rt-text-[#D7D7D7]">စာရင်းမှတ်တမ်းမရှိသေးပါ</span>
             </div>
           </div>
         }
@@ -50,47 +48,47 @@ export function RecordsList({
             type="multiple"
             value={openItems}
             onValueChange={setOpenItems}
-            className="space-y-[10px]"
+            className="rt-space-y-[10px]"
           >
             {records?.map((record, index) => (
               <AccordionItem
                 value={index.toString()}
-                className="border-0 rounded-10  [&_svg]:size-6 [&_svg]:text-primary"
+                className="rt-border-0 rt-rounded-10  [&_svg]:rt-size-6 [&_svg]:rt-text-primary"
                 key={index}
               >
                 <AccordionTrigger
-                  className="hover:no-underline border-0 items-start overflow-hidden bg-primary-lighter rounded-10 data-[state=open]:rounded-b-none"
-                  chevronClassName=" absolute top-3 right-4"
+                  className="hover:rt-no-underline rt-border-0 rt-items-start rt-overflow-hidden rt-bg-primary-lighter rt-rounded-10 data-[state=open]:rt-rounded-b-none"
+                  chevronClassName="rt-absolute rt-top-3 rt-right-4"
                 >
-                  <div className="w-full px-[15px]">
-                    <span className="font-inter text-14px font-bold text-primary mb-[18px]">
+                  <div className="rt-w-full rt-px-[15px]">
+                    <span className="rt-font-inter rt-text-14px rt-font-bold rt-text-primary rt-mb-[18px]">
                       {formatCalendarDate(record.date)}
                     </span>
-                    <div className="flex items-center justify-between mt-3">
-                      <div className="flex flex-col">
-                        <span className="text-muted-light text-13px font-secondary">
+                    <div className="rt-flex rt-items-center rt-justify-between rt-mt-3">
+                      <div className="rt-flex rt-flex-col">
+                        <span className="rt-text-muted-light rt-text-13px rt-font-secondary">
                           စုစုပေါင်း ငွေသွင်း/ထုတ်
                         </span>
-                        <span className="font-secondary font-bold text-17px">
+                        <span className="rt-font-secondary rt-font-bold rt-text-17px">
                           {formatCurrency(record.totalAmount)} Ks
                         </span>
                       </div>
-                      <div className="flex flex-col items-end">
-                        <span className="text-muted-light text-13px font-secondary">
+                      <div className="rt-flex rt-flex-col rt-items-end">
+                        <span className="rt-text-muted-light rt-text-13px rt-font-secondary">
                           စုစုပေါင်း လွှဲခ/ အမြတ်
                         </span>
-                        <span className="font-secondary font-bold text-17px text-accent z-50">
+                        <span className="rt-font-secondary rt-font-bold rt-text-17px rt-text-accent rt-z-50">
                           {formatCurrency(record.totalFee)} Ks
                         </span>
                       </div>
                     </div>
                   </div>
-                  <div className="absolute -bottom-[70px] -right-[112px] w-36 h-36 bg-primary-light rounded-full"></div>
+                  <div className="rt-absolute -rt-bottom-[70px] -rt-right-[112px] rt-w-36 rt-h-36 rt-bg-primary-light rt-rounded-full"></div>
                 </AccordionTrigger>
                 <AccordionContent>
                   {record.records.map((recordItem, index) => (
                     <ReportRecord
-                      className="last:rounded-b-10"
+                      className="last:rt-rounded-b-10"
                       key={index}
                       record={recordItem}
                     />
@@ -98,7 +96,7 @@ export function RecordsList({
                 </AccordionContent>
               </AccordionItem>
             ))}
-            <div ref={observerRef} className="h-1" />
+            <div ref={observerRef} className="rt-h-1" />
           </Accordion>
         }
       />

@@ -4,7 +4,7 @@ import { Envelope, QuickActions, RecentRecord } from "@/components/pages/home";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="rt-min-h-screen rt-bg-background rt-flex rt-flex-col">
       <Header
         navLabel="ငွေလွှဲမှတ်တမ်း"
         boldLabel
@@ -12,7 +12,7 @@ export default function Home() {
         longHeader
       />
       <Envelope />
-      <main className="w-full flex flex-col flex-1 pt-4 gap-[25px]">
+      <main className="rt-w-full rt-flex rt-flex-col rt-flex-1 rt-pt-4 rt-gap-[25px]">
         <QuickActions />
         <RecentRecord />
       </main>

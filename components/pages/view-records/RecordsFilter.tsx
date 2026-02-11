@@ -38,20 +38,20 @@ export function RecordsFilter({
   const endMax = start ? addMonths(start, 3) : undefined;
 
   return (
-    <div className="py-[15px] px-5 bg-white flex flex-col gap-5">
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center">
+    <div className="rt-py-[15px] rt-px-5 rt-bg-white rt-flex rt-flex-col rt-gap-5">
+      <div className="rt-grid rt-grid-cols-[1fr_auto_1fr] rt-items-center">
         <FormDatePicker
           name="startDate"
           control={control}
           placeholder="ရက်စွဲ"
-          endIcon={<CalendarIcon className="h-4 w-4 mb-1" />}
+          endIcon={<CalendarIcon className="rt-h-4 rt-w-4 rt-mb-1" />}
           floatingLabel={false}
           error={errors.startDate?.message}
           showError={false}
           showOkButton
           showCancelButton
           showClearButton
-          className="text-primary hover:text-primary"
+          className="rt-text-primary hover:rt-text-primary"
           btnClassName="hover:text-primary"
           disabledDays={{
             ...(startMin && { before: startMin }),
@@ -59,19 +59,19 @@ export function RecordsFilter({
           }}
           defaultMonth={start || end || undefined}
         />
-        <span className="px-6 text-muted font-primary">မှ</span>
+        <span className="rt-px-6 rt-text-muted rt-font-primary">မှ</span>
         <FormDatePicker
           name="endDate"
           control={control}
           placeholder="ရက်စွဲ"
-          endIcon={<CalendarIcon className="h-4 w-4 mb-1" />}
+          endIcon={<CalendarIcon className="rt-h-4 rt-w-4 rt-mb-1" />}
           floatingLabel={false}
           error={errors.endDate?.message}
           showError={false}
           showOkButton
           showCancelButton
           showClearButton
-          className="text-primary hover:text-primary"
+          className="rt-text-primary hover:rt-text-primary"
           btnClassName="hover:text-primary"
           disabledDays={{
             ...(endMin && { before: endMin }),
@@ -81,21 +81,21 @@ export function RecordsFilter({
         />
       </div>
       <div>
-        <div className="flex items-center gap-[12px]">
+        <div className="rt-flex rt-items-center rt-gap-[12px]">
           <Button
             type="button"
             variant="plain"
             size="plain"
             onClick={() => setSelectedPay(null)}
-            className="relative"
+            className="rt-relative"
           >
-            <span className="px-[14px] py-[9.5px] text-center bg-primary text-white rounded-5 text-11px">
+            <span className="rt-px-[14px] rt-py-[9.5px] rt-text-center rt-bg-primary rt-text-white rt-rounded-5 rt-text-11px">
               All
             </span>
             <If
               isTrue={selectedPay === null}
               ifBlock={
-                <CheckCircleSmIcon className="w-[5px]! h-[5px]! absolute -right-2 -top-2" />
+                <CheckCircleSmIcon className="rt-w-[5px]! rt-h-[5px]! rt-absolute -rt-right-2 -rt-top-2" />
               }
             />
           </Button>
@@ -106,19 +106,19 @@ export function RecordsFilter({
               size="plain"
               onClick={() => setSelectedPay(pay.value as PayType)}
               key={pay.value}
-              className="relative"
+              className="rt-relative"
             >
               <Image
                 src={pay.image}
                 width={43.02}
                 height={43.02}
                 alt={pay.value}
-                className="rounded-5"
+                className="rt-rounded-5"
               />
               <If
                 isTrue={selectedPay === (pay.value as PayType)}
                 ifBlock={
-                  <CheckCircleSmIcon className="w-[5px]! h-[5px]! absolute -right-2 -top-2" />
+                  <CheckCircleSmIcon className="rt-w-[5px]! rt-h-[5px]! rt-absolute -rt-right-2 -rt-top-2" />
                 }
               />
             </Button>
@@ -128,15 +128,15 @@ export function RecordsFilter({
             variant="plain"
             size="plain"
             onClick={() => setSelectedPay("other")}
-            className="relative"
+            className="rt-relative"
           >
-            <span className="px-[5.1px] py-[10px] text-center bg-primary text-white rounded-5 text-11px">
+            <span className="rt-px-[5.1px] rt-py-[10px] rt-text-center rt-bg-primary rt-text-white rt-rounded-5 rt-text-11px">
               အခြား
             </span>
             <If
               isTrue={selectedPay === "other"}
               ifBlock={
-                <CheckCircleSmIcon className="w-[5px]! h-[5px]! absolute -right-2 -top-2" />
+                <CheckCircleSmIcon className="rt-w-[5px]! rt-h-[5px]! rt-absolute -rt-right-2 -rt-top-2" />
               }
             />
           </Button>

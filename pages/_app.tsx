@@ -24,13 +24,13 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div
       className={cn(
-        "flex items-center justify-center bg-white overflow-y-auto",
+        "rt-flex rt-items-center rt-justify-center rt-bg-white rt-overflow-y-auto",
         notoSansMyanmar.variable,
         pyidaungsu.variable,
         inter.variable,
       )}
     >
-      <div className="container">
+      <div className="rt-container">
         <Component {...pageProps} />
       </div>
       <Toaster richColors position="top-right" />

@@ -19,32 +19,32 @@ export function Record({ record, className }: RecordProps) {
     <div
       key={record.id}
       className={cn(
-        "w-full border-b last:border-0 pb-[15px] px-[15px] hover:bg-gray-50 flex flex-col bg-white",
-        PaymentImage ? "pt-[12.75px] gap-[12.75px]" : "pt-5 gap-5",
+        "rt-w-full rt-border-b last:rt-border-0 rt-pb-[15px] rt-px-[15px] hover:rt-bg-gray-50 rt-flex rt-flex-col rt-bg-white",
+        PaymentImage ? "rt-pt-[12.75px] rt-gap-[12.75px]" : "rt-pt-5 rt-gap-5",
         className,
       )}
     >
-      <div className=" flex justify-between items-center">
+      <div className=" rt-flex rt-justify-between rt-items-center">
         {PaymentImage ? (
           <Image
             src={PaymentImage}
             alt={record.pay!}
             width={27}
             height={27}
-            className="rounded-5"
+            className="rt-rounded-5"
           />
         ) : (
-          <span className="font-primary font-medium text-[13px] leading-none">
+          <span className="rt-font-primary rt-font-medium rt-text-[13px] rt-leading-none">
             {record.description}
           </span>
         )}
-        <span className="font-inter text-15px leading-none">
+        <span className="rt-font-inter rt-text-15px rt-leading-none">
           {formatNumber(record.amount!)} Ks
         </span>
       </div>
-      <div className="font-inter text-15px flex justify-between items-center leading-none">
+      <div className="rt-font-inter rt-text-15px rt-flex rt-justify-between rt-items-center rt-leading-none">
         <span>{record.phoneNo}</span>
-        <span className="text-accent">{formatNumber(record.fee!)} Ks</span>
+        <span className="rt-text-accent">{formatNumber(record.fee!)} Ks</span>
       </div>
     </div>
   );
@@ -57,32 +57,32 @@ export function ReportRecord({ record, className }: ReportRecordProps) {
     <div
       key={record.Id}
       className={cn(
-        "w-full border-b last:border-0 pb-[15px] px-[15px] hover:bg-gray-50 flex flex-col bg-white",
-        PaymentImage ? "pt-[12.75px] gap-[12.75px]" : "pt-5 gap-5",
+        "rt-w-full rt-border-b last:rt-border-0 rt-pb-[15px] rt-px-[15px] hover:rt-bg-gray-50 rt-flex rt-flex-col rt-bg-white",
+        PaymentImage ? "rt-pt-[12.75px] rt-gap-[12.75px]" : "rt-pt-5 rt-gap-5",
         className,
       )}
     >
-      <div className=" flex justify-between items-center">
+      <div className=" rt-flex rt-justify-between rt-items-center">
         {PaymentImage ? (
           <Image
             src={PaymentImage}
             alt={record.Pay!}
             width={27}
             height={27}
-            className="rounded-5"
+            className="rt-rounded-5"
           />
         ) : (
-          <span className="font-primary font-medium text-[13px] leading-none">
+          <span className="rt-font-primary rt-font-medium rt-text-[13px] rt-leading-none">
             {record.Description}
           </span>
         )}
-        <span className="font-inter text-15px leading-none">
+        <span className="rt-font-inter rt-text-15px rt-leading-none">
           {formatNumber(record.Amount!)} Ks
         </span>
       </div>
-      <div className="font-inter text-15px flex justify-between items-center leading-none">
+      <div className="rt-font-inter rt-text-15px rt-flex rt-justify-between rt-items-center rt-leading-none">
         <span>{record.PhoneNo}</span>
-        <span className="text-accent">{formatNumber(record.Fee!)} Ks</span>
+        <span className="rt-text-accent">{formatNumber(record.Fee!)} Ks</span>
       </div>
     </div>
   );
