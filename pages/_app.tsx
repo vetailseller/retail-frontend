@@ -2,7 +2,7 @@ import { cn } from "@/common/utils";
 import { inter, notoSansMyanmar, pyidaungsu } from "@/lib/fonts";
 import { Toaster } from "sonner";
 import { useAuthStore } from "@/lib/store/authStore";
-import "@/styles/globals.css";
+import "@/styles/globals.module.css";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
