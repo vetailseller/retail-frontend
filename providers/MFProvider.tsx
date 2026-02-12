@@ -1,6 +1,6 @@
 //@ts-ignore
 import "tailwindcss/tailwind.css";
-
+import "@/styles/globals.module.css";
 import { ReactNode } from "react";
 
 const MFProvider = ({ children }: { children: ReactNode }) => {
