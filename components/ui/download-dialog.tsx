@@ -106,7 +106,7 @@ export function DownloadDialog({
                     floatingLabel={false}
                     error={errors.startDate?.message}
                     className="tr-text-primary hover:tr-text-primary"
-                    btnClassName="hover:text-primary"
+                    btnClassName="hover:tr-text-primary"
                     showError={false}
                   />
                   <span className="tr-px-6 tr-text-muted tr-font-primary">မှ</span>
@@ -118,7 +118,7 @@ export function DownloadDialog({
                     floatingLabel={false}
                     error={errors.endDate?.message}
                     className="tr-text-primary hover:tr-text-primary"
-                    btnClassName="hover:text-primary"
+                    btnClassName="hover:tr-text-primary"
                     showError={false}
                   />
                 </div>

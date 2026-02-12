@@ -52,7 +52,7 @@ export function RecordsFilter({
           showCancelButton
           showClearButton
           className="tr-text-primary hover:tr-text-primary"
-          btnClassName="hover:text-primary"
+          btnClassName="hover:tr-text-primary"
           disabledDays={{
             ...(startMin && { before: startMin }),
             ...(startMax && { after: startMax }),
@@ -72,7 +72,7 @@ export function RecordsFilter({
           showCancelButton
           showClearButton
           className="tr-text-primary hover:tr-text-primary"
-          btnClassName="hover:text-primary"
+          btnClassName="hover:tr-text-primary"
           disabledDays={{
             ...(endMin && { before: endMin }),
             ...(endMax && { after: endMax }),

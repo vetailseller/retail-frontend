@@ -75,7 +75,7 @@ const SelectContent = React.forwardRef<
       className={cn(
         "tr-relative tr-z-50 tr-max-h-96 tr-min-w-[8rem] tr-overflow-hidden tr-rounded-md tr-border tr-bg-popover tr-text-popover-foreground tr-shadow-md data-[state=open]:tr-animate-in data-[state=closed]:tr-animate-out data-[state=closed]:tr-fade-out-0 data-[state=open]:tr-fade-in-0 data-[state=closed]:tr-zoom-out-95 data-[state=open]:tr-zoom-in-95 data-[side=bottom]:tr-slide-in-from-top-2 data-[side=left]:tr-slide-in-from-right-2 data-[side=right]:tr-slide-in-from-left-2 data-[side=top]:tr-slide-in-from-bottom-2",
         position === "popper" &&
-          "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
+          "data-[side=bottom]:tr-translate-y-1 data-[side=left]:-tr-translate-x-1 data-[side=right]:tr-translate-x-1 data-[side=top]:-tr-translate-y-1",
         className,
       )}
       position={position}

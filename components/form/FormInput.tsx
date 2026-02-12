@@ -99,9 +99,9 @@ export function FormInput<TFieldValues extends FieldValues>({
                     "focus-visible:tr-outline-none focus-visible:tr-ring-1 focus-visible:tr-ring-ring",
                     "disabled:tr-cursor-not-allowed disabled:tr-opacity-50",
                     errorMessage &&
-                      "border-destructive focus-visible:ring-destructive",
-                    startIcon && "pl-11",
-                    endIcon && "pr-10",
+                      "tr-border-destructive focus-visible:tr-ring-destructive",
+                    startIcon && "tr-pl-11",
+                    endIcon && "tr-pr-10",
                   )}
                   onFocus={handleFocus}
                   onBlur={handleBlur}
@@ -178,8 +178,8 @@ export function FormInput<TFieldValues extends FieldValues>({
                   "disabled:tr-cursor-not-allowed disabled:tr-opacity-50",
                   errorMessage &&
                     "tr-border-destructive focus-visible:tr-ring-destructive",
-                  startIcon && "pl-10",
-                  endIcon && "pr-10",
+                  startIcon && "tr-pl-10",
+                  endIcon && "tr-pr-10",
                 )}
                 onFocus={handleFocus}
                 onBlur={handleBlur}

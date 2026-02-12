@@ -14,20 +14,20 @@ const buttonVariants = cva(
         destructive:
           "tr-bg-destructive tr-text-destructive-foreground tr-shadow-sm hover:tr-bg-destructive/90",
         outline:
-          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+          "tr-border tr-border-input tr-bg-background tr-shadow-sm hover:tr-bg-accent hover:tr-text-accent-foreground",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "tr-bg-secondary tr-text-secondary-foreground tr-shadow-sm hover:tr-bg-secondary/80",
+        ghost: "hover:tr-bg-accent hover:tr-text-accent-foreground",
+        link: "tr-text-primary tr-underline-offset-4 hover:tr-underline",
         plain:
-          "bg-transparent hover:bg-transparent hover:text-gray-100 [&_svg]:pointer-events-none [&_svg]:size-auto [&_svg]:shrink-0",
+          "tr-bg-transparent hover:tr-bg-transparent hover:tr-text-gray-100 [&_svg]:tr-pointer-events-none [&_svg]:tr-size-auto [&_svg]:tr-shrink-0",
       },
       size: {
-        default: "py-[11px] px-[77px] text-15px font-bold",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-10 rounded-md px-8",
-        icon: "h-9 w-9",
-        plain: "p-0 w-auto h-auto",
+        default: "tr-py-[11px] tr-px-[77px] tr-text-15px tr-font-bold",
+        sm: "tr-h-8 tr-rounded-md tr-px-3 tr-text-xs",
+        lg: "tr-h-10 tr-rounded-md tr-px-8",
+        icon: "tr-h-9 tr-w-9",
+        plain: "tr-p-0 tr-w-auto tr-h-auto",
       },
     },
     defaultVariants: {
