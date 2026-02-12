@@ -33,18 +33,18 @@ const actions = [
 
 export function QuickActions() {
   return (
-    <Card className="w-[360px] mx-auto border-0 shadow-none rounded-10">
-      <CardContent className="flex justify-between font-primary px-[15px] py-[13px]">
+    <Card className="rt-w-[360px] rt-mx-auto rt-border-0 rt-shadow-none rt-rounded-10">
+      <CardContent className="rt-flex rt-justify-between rt-font-primary rt-px-[15px] rt-py-[13px]">
         {actions.map((action) => (
           <Link
             key={action.route}
             href={action.route}
-            className="flex flex-col items-center gap-2"
+            className="rt-flex rt-flex-col rt-items-center rt-gap-2"
           >
-            <div className="w-[52px] h-[52px] bg-primary-light flex items-center justify-center rounded-full">
-              <action.icon className="w-6 text-primary-muted" />
+            <div className="rt-w-[52px] rt-h-[52px] rt-bg-primary-light rt-flex rt-items-center rt-justify-center rt-rounded-full">
+              <action.icon className="rt-w-6 rt-text-primary-muted" />
             </div>
-            <span className="text-12px">{action.label}</span>
+            <span className="rt-text-12px">{action.label}</span>
           </Link>
         ))}
       </CardContent>

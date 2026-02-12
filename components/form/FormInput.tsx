@@ -79,10 +79,10 @@ export function FormInput<TFieldValues extends FieldValues>({
         // Floating label implementation
         if (floatingLabel) {
           return (
-            <div className={cn("w-full", className)}>
-              <div className="relative">
+            <div className={cn("rt-w-full", className)}>
+              <div className="rt-relative">
                 {startIcon && (
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-muted pointer-events-none z-10">
+                  <div className="rt-absolute rt-left-4 rt-top-1/2 -rt-translate-y-1/2 rt-text-muted rt-pointer-events-none rt-z-10">
                     {startIcon}
                   </div>
                 )}
@@ -94,14 +94,14 @@ export function FormInput<TFieldValues extends FieldValues>({
                   disabled={disabled}
                   placeholder={placeholder}
                   className={cn(
-                    "hide-number-stepper peer w-full rounded-10 border border-input bg-transparent px-4 py-[10px] text-base shadow-sm transition-all no-autofill-bg",
-                    "placeholder:text-transparent overflow-hidden whitespace-nowrap leading-none h-[46px]",
-                    "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
-                    "disabled:cursor-not-allowed disabled:opacity-50",
+                    "rt-hide-number-stepper rt-peer rt-w-full rt-rounded-10 rt-border rt-border-input rt-bg-transparent rt-px-4 rt-py-[10px] rt-text-base rt-shadow-sm rt-transition-all rt-no-autofill-bg",
+                    "placeholder:rt-text-transparent rt-overflow-hidden rt-whitespace-nowrap rt-leading-none rt-h-[46px]",
+                    "focus-visible:rt-outline-none focus-visible:rt-ring-1 focus-visible:rt-ring-ring",
+                    "disabled:rt-cursor-not-allowed disabled:rt-opacity-50",
                     errorMessage &&
-                      "border-destructive focus-visible:ring-destructive",
-                    startIcon && "pl-11",
-                    endIcon && "pr-10",
+                      "rt-border-destructive focus-visible:rt-ring-destructive",
+                    startIcon && "rt-pl-11",
+                    endIcon && "rt-pr-10",
                   )}
                   onFocus={handleFocus}
                   onBlur={handleBlur}
@@ -110,14 +110,14 @@ export function FormInput<TFieldValues extends FieldValues>({
                 {label && (
                   <label
                     className={cn(
-                      "absolute left-3 top-1/2 -translate-y-1/2",
-                      "pointer-events-none font-secondary text-14px text-muted",
-                      "transition-all duration-200 ease-linear",
-                      "bg-white px-1",
-                      isFloating && "top-0 text-xs",
-                      errorMessage && isFloating && "text-destructive",
-                      startIcon && !isFloating && "left-10",
-                      startIcon && isFloating && "left-5",
+                      "rt-absolute rt-left-3 rt-top-1/2 -rt-translate-y-1/2",
+                      "rt-pointer-events-none rt-font-secondary rt-text-14px rt-text-muted",
+                      "rt-transition-all rt-duration-200 rt-ease-linear",
+                      "rt-bg-white rt-px-1",
+                      isFloating && "rt-top-0 rt-text-xs",
+                      errorMessage && isFloating && "rt-text-destructive",
+                      startIcon && !isFloating && "rt-left-10",
+                      startIcon && isFloating && "rt-left-5",
                     )}
                   >
                     {label}
@@ -125,7 +125,7 @@ export function FormInput<TFieldValues extends FieldValues>({
                 )}
 
                 {endIcon && (
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted pointer-events-none z-10">
+                  <div className="rt-absolute rt-right-3 rt-top-1/2 -rt-translate-y-1/2 rt-text-muted rt-pointer-events-none rt-z-10">
                     {endIcon}
                   </div>
                 )}
@@ -133,7 +133,7 @@ export function FormInput<TFieldValues extends FieldValues>({
 
               {/* Error Message */}
               {errorMessage && (
-                <p className="text-11px text-destructive mt-1">
+                <p className="rt-text-11px rt-text-destructive rt-mt-1">
                   {errorMessage}
                 </p>
               )}
@@ -143,22 +143,22 @@ export function FormInput<TFieldValues extends FieldValues>({
 
         // Normal label above input
         return (
-          <div className={cn("w-full", className)}>
+          <div className={cn("rt-w-full", className)}>
             {label && (
               <Label
                 htmlFor={name}
                 className={cn(
-                  errorMessage && "text-destructive",
-                  "font-primary text-13px text-[#4C4C4C] font-medium",
+                  errorMessage && "rt-text-destructive",
+                  "rt-font-primary rt-text-13px rt-text-[#4C4C4C] rt-font-medium",
                 )}
               >
                 {label}
               </Label>
             )}
 
-            <div className="relative mt-2">
+            <div className="rt-relative rt-mt-2">
               {startIcon && (
-                <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted pointer-events-none z-10">
+                <div className="rt-absolute rt-left-3 rt-top-1/2 -rt-translate-y-1/2 rt-text-muted rt-pointer-events-none rt-z-10">
                   {startIcon}
                 </div>
               )}
@@ -172,14 +172,14 @@ export function FormInput<TFieldValues extends FieldValues>({
                 placeholder={placeholder}
                 autoComplete="one-time-code"
                 className={cn(
-                  "hide-number-stepper peer w-full rounded-10 border border-input bg-white px-4 py-[12px] text-base shadow-sm transition-all h-[46px] focus:ring-0",
-                  "placeholder:text-muted",
-                  "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
-                  "disabled:cursor-not-allowed disabled:opacity-50",
+                  "rt-hide-number-stepper rt-peer rt-w-full rt-rounded-10 rt-border rt-border-input rt-bg-white rt-px-4 rt-py-[12px] rt-text-base rt-shadow-sm rt-transition-all rt-h-[46px] focus:rt-ring-0",
+                  "placeholder:rt-text-muted",
+                  "focus-visible:rt-outline-none focus-visible:rt-ring-1 focus-visible:rt-ring-ring",
+                  "disabled:rt-cursor-not-allowed disabled:rt-opacity-50",
                   errorMessage &&
-                    "border-destructive focus-visible:ring-destructive",
-                  startIcon && "pl-10",
-                  endIcon && "pr-10",
+                    "rt-border-destructive focus-visible:rt-ring-destructive",
+                  startIcon && "rt-pl-10",
+                  endIcon && "rt-pr-10",
                 )}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
@@ -187,7 +187,7 @@ export function FormInput<TFieldValues extends FieldValues>({
               />
 
               {endIcon && (
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted pointer-events-none z-10">
+                <div className="rt-absolute rt-right-3 rt-top-1/2 -rt-translate-y-1/2 rt-text-muted rt-pointer-events-none rt-z-10">
                   {endIcon}
                 </div>
               )}
@@ -195,7 +195,9 @@ export function FormInput<TFieldValues extends FieldValues>({
 
             {/* Error Message */}
             {errorMessage && (
-              <p className="text-11px text-destructive mt-1">{errorMessage}</p>
+              <p className="rt-text-11px rt-text-destructive rt-mt-1">
+                {errorMessage}
+              </p>
             )}
           </div>
         );

@@ -30,23 +30,23 @@ export function Envelope() {
   }, []);
 
   return (
-    <div className="mx-auto relative w-[378px] h-[233px] bg-[url('/images/envelope-bg.png')] bg-cover bg-no-repeat flex items-center justify-center -mt-[116px]">
-      <div className="mx-auto relative w-[355px] h-[206px] bg-[url('/images/envelope-card-bg.png')] bg-cover bg-no-repeat flex items-center justify-center">
-        <div className="absolute top-3 lef-0 w-10/12 flex justify-between items-center">
+    <div className="rt-mx-auto rt-relative rt-w-[378px] rt-h-[233px] rt-bg-[url('/images/envelope-bg.png')] rt-bg-cover rt-bg-no-repeat rt-flex rt-items-center rt-justify-center rt--mt-[116px]">
+      <div className="rt-mx-auto rt-relative rt-w-[355px] rt-h-[206px] rt-bg-[url('/images/envelope-card-bg.png')] rt-bg-cover rt-bg-no-repeat rt-flex rt-items-center rt-justify-center">
+        <div className="rt-absolute rt-top-3 rt-lef-0 rt-w-10/12 rt-flex rt-justify-between rt-items-center">
           <Image
             src="/images/logo.png"
             alt="page logo"
             width={84}
             height={42}
           />
-          <span className="font-primary font-bold text-13 text-white">
+          <span className="rt-font-primary rt-font-bold rt-text-13 rt-text-white">
             ငွေသွင်း/ထုတ်စာရင်း
           </span>
         </div>
-        <div className="mx-auto relative w-[380px] h-[235px] bg-[url('/images/envelope-front-bg.png')] bg-contain bg-no-repeat bg-[position:0px_75px]">
-          <div className="absolute bottom-12 left-7 w-10/12 gap-8 flex justify-between">
-            <div className="flex flex-col basis-1/2 gap-[2px]">
-              <div className="flex items-center gap-[5px]">
+        <div className="rt-mx-auto rt-relative rt-w-[380px] rt-h-[235px] rt-bg-[url('/images/envelope-front-bg.png')] rt-bg-contain rt-bg-no-repeat rt-bg-[position:0px_75px]">
+          <div className="rt-absolute rt-bottom-12 rt-left-7 rt-w-10/12 rt-gap-8 rt-flex rt-justify-between">
+            <div className="rt-flex rt-flex-col rt-basis-1/2 rt-gap-[2px]">
+              <div className="rt-flex rt-items-center rt-gap-[5px]">
                 <Button
                   onClick={() => setShowAmount(!showAmount)}
                   variant="plain"
@@ -58,19 +58,19 @@ export function Envelope() {
                     elseBlock={<EyeClosedIcon />}
                   />
                 </Button>
-                <span className="font-primary text-15px text-[#313131]">
+                <span className="rt-font-primary rt-text-15px rt-text-[#313131]">
                   ငွေသွင်း/ထုတ်
                 </span>
               </div>
-              <div className="flex items-center">
-                <span className="font-inter font-semibold text-21px">
+              <div className="rt-flex rt-items-center">
+                <span className="rt-font-inter rt-font-semibold rt-text-21px">
                   {showAmount ? formatNumber(total.total) : "* * * * * *"}
                 </span>
-                <span className="text-15px ml-1"> Ks</span>
+                <span className="rt-text-15px rt-ml-1"> Ks</span>
               </div>
             </div>
-            <div className="flex flex-col basis-1/2 gap-[2px]">
-              <div className="flex items-center gap-[5px]">
+            <div className="rt-flex rt-flex-col rt-basis-1/2 rt-gap-[2px]">
+              <div className="rt-flex rt-items-center rt-gap-[5px]">
                 <Button
                   onClick={() => setShowFee(!showFee)}
                   variant="plain"
@@ -82,15 +82,15 @@ export function Envelope() {
                     elseBlock={<EyeClosedIcon />}
                   />
                 </Button>
-                <span className="font-primary text-15px text-[#313131]">
+                <span className="rt-font-primary rt-text-15px rt-text-[#313131]">
                   လွှဲခ/အမြတ်
                 </span>
               </div>
-              <div className="flex items-center font-inter">
-                <span className="font-semibold text-21px">
+              <div className="rt-flex rt-items-center rt-font-inter">
+                <span className="rt-font-semibold rt-text-21px">
                   {showFee ? formatNumber(total.fee) : "* * * * * *"}
                 </span>
-                <span className="text-15px ml-1">Ks</span>
+                <span className="rt-text-15px rt-ml-1">Ks</span>
               </div>
             </div>
           </div>

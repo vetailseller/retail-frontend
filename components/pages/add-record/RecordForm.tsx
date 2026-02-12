@@ -116,7 +116,7 @@ export function RecordForm() {
   return (
     <form
       onSubmit={handleSubmit(handleFormSubmit)}
-      className="flex flex-col gap-6 mt-5 relative flex-1"
+      className="rt-flex rt-flex-col rt-gap-6 rt-mt-5 rt-relative rt-flex-1"
     >
       <PaymentTabs
         selectedTab={selectedTab}
@@ -136,13 +136,13 @@ export function RecordForm() {
         setCurrentAmount={setCurrentAmount}
       />
 
-      <div className="flex items-center justify-center gap-3 w-full h-[94px] shadow-[0px_-2px_15px_0px_rgba(0,0,0,0.1)] sticky bottom-0 left-0 bg-white mt-auto z-50">
+      <div className="rt-flex rt-items-center rt-justify-center rt-gap-3 rt-w-full rt-h-[94px] rt-shadow-[0px_-2px_15px_0px_rgba(0,0,0,0.1)] rt-sticky rt-bottom-0 rt-left-0 rt-bg-white rt-mt-auto rt-z-50">
         <Button
           type="submit"
           disabled={isLoading || isSubmitting}
-          className="text-white w-11/12 "
+          className="rt-text-white rt-w-11/12 "
         >
-          <span className="font-primary text-15px mr-[7px]">
+          <span className="rt-font-primary rt-text-15px rt-mr-[7px]">
             စာရင်းမှတ်တမ်း မှတ်မည်
           </span>
           <FloppyDisk />

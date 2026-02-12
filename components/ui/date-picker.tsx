@@ -1,8 +1,3 @@
-/**
- * Date Picker Component
- * Date picker with floating label animation
- */
-
 import * as React from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
@@ -38,24 +33,24 @@ export function DatePicker({
   const isFloating = isOpen || !!value;
 
   return (
-    <div className={cn("w-full", className)}>
-      <div className="relative">
+    <div className={cn("rt-w-full", className)}>
+      <div className="rt-relative">
         <Popover open={isOpen} onOpenChange={setIsOpen}>
           <PopoverTrigger asChild>
             <Button
               variant="outline"
               disabled={disabled}
               className={cn(
-                "w-full justify-start text-left font-normal px-3 py-6 h-auto",
-                !value && "text-muted-foreground",
-                error && "border-destructive"
+                "rt-w-full rt-justify-start rt-text-left rt-font-normal rt-px-3 rt-py-6 rt-h-auto",
+                !value && "rt-text-muted-foreground",
+                error && "rt-border-destructive",
               )}
             >
-              <CalendarIcon className="mr-2 h-4 w-4" />
+              <CalendarIcon className="rt-mr-2 rt-h-4 rt-w-4" />
               {value ? format(value, "PPP") : <span>{placeholder}</span>}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
+          <PopoverContent className="rt-w-auto rt-p-0" align="start">
             <Calendar
               mode="single"
               selected={value}
@@ -72,12 +67,12 @@ export function DatePicker({
         {label && (
           <label
             className={cn(
-              "absolute left-3 top-1/2 -translate-y-1/2",
-              "text-muted-foreground pointer-events-none",
-              "transition-all duration-200 ease-linear",
-              "bg-background px-1",
-              isFloating && "top-0 text-xs",
-              error && isFloating && "text-destructive"
+              "rt-absolute rt-left-3 rt-top-1/2 -rt-translate-y-1/2",
+              "rt-text-muted-foreground rt-pointer-events-none",
+              "rt-transition-all rt-duration-200 rt-ease-linear",
+              "rt-bg-background rt-px-1",
+              isFloating && "rt-top-0 rt-text-xs",
+              error && isFloating && "rt-text-destructive",
             )}
           >
             {label}
@@ -86,7 +81,9 @@ export function DatePicker({
       </div>
 
       {/* Error Message */}
-      {error && <p className="text-sm text-destructive mt-1.5">{error}</p>}
+      {error && (
+        <p className="rt-text-sm rt-text-destructive rt-mt-1.5">{error}</p>
+      )}
     </div>
   );
 }

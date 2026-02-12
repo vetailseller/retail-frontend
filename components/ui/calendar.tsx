@@ -15,8 +15,8 @@ function Calendar({
     props.selected instanceof Date
       ? props.selected
       : Array.isArray(props.selected)
-      ? props.selected[0]
-      : new Date()
+        ? props.selected[0]
+        : new Date(),
   );
 
   const defaultClassNames = getDefaultClassNames();
@@ -27,15 +27,15 @@ function Calendar({
       onMonthChange={setMonth}
       month={month}
       reverseYears
-      className={cn("p-3", className)}
+      className={cn("rt-p-3", className)}
       classNames={{
-        selected: `${getDefaultClassNames().selected} bg-[#DCEBFF]`,
+        selected: `${getDefaultClassNames().selected} rt-bg-[#DCEBFF]`,
         day: `${
           getDefaultClassNames().day
-        } hover:bg-primary-light rounded-full`,
+        } hover:rt-bg-primary-light rt-rounded-full`,
         day_button: `${
           getDefaultClassNames().day_button
-        } w-9 h-9 p-0 font-medium`,
+        } rt-w-9 rt-h-9 rt-p-0 rt-font-medium`,
       }}
       {...props}
     />

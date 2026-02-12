@@ -67,7 +67,7 @@ export function DownloadDialog({
         <DialogOverlay />
 
         <DialogPrimitive.Content
-          className="absolute left-0 bottom-0 z-50 flex items-center justify-center w-full rounded-b-none"
+          className="rt-absolute rt-left-0 rt-bottom-0 rt-z-50 rt-flex rt-items-center rt-justify-center rt-w-full rt-rounded-b-none"
           onInteractOutside={(e) => e.preventDefault()}
           onEscapeKeyDown={(e) => e.preventDefault()}
         >
@@ -79,80 +79,82 @@ export function DownloadDialog({
                 toDate,
               }),
             )}
-            className="w-full rounded-b-none rounded-t-20 border bg-white p-5 shadow-lg flex flex-col items-center text-center"
+            className="rt-w-full rt-rounded-b-none rt-rounded-t-20 rt-border rt-bg-white rt-p-5 rt-shadow-lg rt-flex rt-flex-col rt-items-center rt-text-center"
           >
             {/* Close button */}
-            <DialogPrimitive.Close className="absolute right-4 top-4">
-              <X className="h-4 w-4" />
+            <DialogPrimitive.Close className="rt-absolute rt-right-4 rt-top-4">
+              <X className="rt-h-4 rt-w-4" />
             </DialogPrimitive.Close>
 
-            <DialogHeader className="space-y-3 border-b w-full pb-2">
-              <h1 className="text-16px! font-semibold">
+            <DialogHeader className="rt-space-y-3 rt-border-b rt-w-full rt-pb-2">
+              <h1 className="rt-text-16px! rt-font-semibold">
                 စာရင်းဒေါင်းလုပ်ဆွဲမည်
               </h1>
             </DialogHeader>
 
-            <div className="w-full text-left mt-4">
+            <div className="rt-w-full rt-text-left rt-mt-4">
               <div>
-                <p className="mt-3 text-15px font-secondary mb-2">
+                <p className="rt-mt-3 rt-text-15px rt-font-secondary rt-mb-2">
                   အချိန်ကာလရွေးချယ်ပါ
                 </p>
-                <div className="grid grid-cols-[1fr_auto_1fr] items-center">
+                <div className="rt-grid rt-grid-cols-[1fr_auto_1fr] rt-items-center">
                   <FormDatePicker
                     name="startDate"
                     control={control}
                     placeholder="ရက်စွဲ"
-                    endIcon={<CalendarIcon className="h-4 w-4 mb-1" />}
+                    endIcon={<CalendarIcon className="rt-h-4 rt-w-4 rt-mb-1" />}
                     floatingLabel={false}
                     error={errors.startDate?.message}
-                    className="text-primary hover:text-primary"
-                    btnClassName="hover:text-primary"
+                    className="rt-text-primary hover:rt-text-primary"
+                    btnClassName="hover:rt-text-primary"
                     showError={false}
                   />
-                  <span className="px-6 text-muted font-primary">မှ</span>
+                  <span className="rt-px-6 rt-text-muted rt-font-primary">
+                    မှ
+                  </span>
                   <FormDatePicker
                     name="endDate"
                     control={control}
                     placeholder="ရက်စွဲ"
-                    endIcon={<CalendarIcon className="h-4 w-4 mb-1" />}
+                    endIcon={<CalendarIcon className="rt-h-4 rt-w-4 rt-mb-1" />}
                     floatingLabel={false}
                     error={errors.endDate?.message}
-                    className="text-primary hover:text-primary"
-                    btnClassName="hover:text-primary"
+                    className="rt-text-primary hover:rt-text-primary"
+                    btnClassName="hover:rt-text-primary"
                     showError={false}
                   />
                 </div>
               </div>
-              <div className="mt-6">
-                <p className="mt-3 text-15px font-secondary mb-2">
+              <div className="rt-mt-6">
+                <p className="rt-mt-3 rt-text-15px rt-font-secondary rt-mb-2">
                   ဖိုင်အမျိုးအစားရွေးချယ်ပါ
                 </p>
-                <div className="flex items-center gap-3">
+                <div className="rt-flex rt-items-center rt-gap-3">
                   <Button
                     variant="outline"
                     className={cn(
-                      "px-4 bg-[#F7F7F7] [&_svg]:w-5 [&_svg]:h-5 py-0 hover:bg-transparent",
-                      selectedFileType === "pdf" && "border-primary",
+                      "rt-px-4 rt-bg-[#F7F7F7] [&_svg]:rt-w-5 [&_svg]:rt-h-5 rt-py-0 hover:rt-bg-transparent",
+                      selectedFileType === "pdf" && "rt-border-primary",
                     )}
                     onClick={() => setSelectedFileType("pdf")}
                     type="button"
                   >
                     <PdfIcon />
-                    <span className="font-secondary text-15px font-normal mt-[5px] text-gray-900">
+                    <span className="rt-font-secondary rt-text-15px rt-font-normal rt-mt-[5px] rt-text-gray-900">
                       PDF
                     </span>
                   </Button>
                   <Button
                     variant="outline"
                     className={cn(
-                      "px-3 bg-[#F7F7F7] [&_svg]:w-5 [&_svg]:h-5 py-0 hover:bg-transparent",
-                      selectedFileType === "excel" && "border-primary",
+                      "rt-px-3 rt-bg-[#F7F7F7] [&_svg]:rt-w-5 [&_svg]:rt-h-5 rt-py-0 hover:rt-bg-transparent",
+                      selectedFileType === "excel" && "rt-border-primary",
                     )}
                     onClick={() => setSelectedFileType("excel")}
                     type="button"
                   >
                     <ExcelIcon className="bg-white" />
-                    <span className="font-secondary text-15px font-normal mt-[5px] text-gray-900">
+                    <span className="rt-font-secondary rt-text-15px rt-font-normal rt-mt-[5px] rt-text-gray-900">
                       Excel
                     </span>
                   </Button>
@@ -161,7 +163,7 @@ export function DownloadDialog({
             </div>
 
             <Button
-              className="w-full mt-4 gap-2 text-white"
+              className="rt-w-full rt-mt-4 rt-gap-2 rt-text-white"
               disabled={isDownloading}
             >
               {isDownloading ? "ဒေါင်းလုပ်ဆွဲနေပါသည်..." : "ဒေါင်းလုပ်ဆွဲမည်"}

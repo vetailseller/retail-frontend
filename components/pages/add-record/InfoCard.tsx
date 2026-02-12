@@ -3,12 +3,12 @@ import InfoIcon from "@/components/icons/info.svg";
 
 export function InfoCard() {
   return (
-    <Card className="px-5 border-0 shadow-none">
-      <CardContent className="px-[15px] py-[10px] rounded-5  bg-[#DCEBFF] text-primary flex gap-[19px]">
-        <div className="mt-[2px]">
-          <InfoIcon className="w-5 h-5" />
+    <Card className="rt-px-5 rt-border-0 rt-shadow-none">
+      <CardContent className="rt-px-[15px] rt-py-[10px] rt-rounded-5 rt-bg-[#DCEBFF] rt-text-primary rt-flex rt-gap-[19px]">
+        <div className="rt-mt-[2px]">
+          <InfoIcon className="rt-w-5 rt-h-5" />
         </div>
-        <p className="font-bold text-13px leading-8">
+        <p className="rt-font-bold rt-text-13px rt-leading-8">
           မိမိကြိုက်နှစ်သက်ရာငွေလွှဲပုံစံဖြင့်မှတ်လိုပါက “အခြားအမျိုးအစား”
           ကိုနှိပ်ပါ။
         </p>
