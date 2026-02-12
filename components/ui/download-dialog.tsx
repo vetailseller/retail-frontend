@@ -87,14 +87,14 @@ export function DownloadDialog({
             </DialogPrimitive.Close>
 
             <DialogHeader className="rt-space-y-3 rt-border-b rt-w-full rt-pb-2">
-              <h1 className="rt-text-16px! rt-font-semibold">
+              <h1 className="rt-text-[1rem] rt-leading-[1.625rem]! rt-font-semibold">
                 စာရင်းဒေါင်းလုပ်ဆွဲမည်
               </h1>
             </DialogHeader>
 
             <div className="rt-w-full rt-text-left rt-mt-4">
               <div>
-                <p className="rt-mt-3 rt-text-15px rt-font-secondary rt-mb-2">
+                <p className="rt-mt-3 rt-text-[0.9375rem] rt-leading-[2.0625rem] rt-font-secondary rt-mb-2">
                   အချိန်ကာလရွေးချယ်ပါ
                 </p>
                 <div className="rt-grid rt-grid-cols-[1fr_auto_1fr] rt-items-center">
@@ -126,7 +126,7 @@ export function DownloadDialog({
                 </div>
               </div>
               <div className="rt-mt-6">
-                <p className="rt-mt-3 rt-text-15px rt-font-secondary rt-mb-2">
+                <p className="rt-mt-3 rt-text-[0.9375rem] rt-leading-[2.0625rem] rt-font-secondary rt-mb-2">
                   ဖိုင်အမျိုးအစားရွေးချယ်ပါ
                 </p>
                 <div className="rt-flex rt-items-center rt-gap-3">
@@ -140,7 +140,7 @@ export function DownloadDialog({
                     type="button"
                   >
                     <PdfIcon />
-                    <span className="rt-font-secondary rt-text-15px rt-font-normal rt-mt-[5px] rt-text-gray-900">
+                    <span className="rt-font-secondary rt-text-[0.9375rem] rt-leading-[2.0625rem] rt-font-normal rt-mt-[5px] rt-text-gray-900">
                       PDF
                     </span>
                   </Button>
@@ -154,7 +154,7 @@ export function DownloadDialog({
                     type="button"
                   >
                     <ExcelIcon className="bg-white" />
-                    <span className="rt-font-secondary rt-text-15px rt-font-normal rt-mt-[5px] rt-text-gray-900">
+                    <span className="rt-font-secondary rt-text-[0.9375rem] rt-leading-[2.0625rem] rt-font-normal rt-mt-[5px] rt-text-gray-900">
                       Excel
                     </span>
                   </Button>

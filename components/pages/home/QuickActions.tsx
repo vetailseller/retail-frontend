@@ -44,7 +44,7 @@ export function QuickActions() {
             <div className="rt-w-[52px] rt-h-[52px] rt-bg-primary-light rt-flex rt-items-center rt-justify-center rt-rounded-full">
               <action.icon className="rt-w-6 rt-text-primary-muted" />
             </div>
-            <span className="rt-text-12px">{action.label}</span>
+            <span className="rt-text-[0.75rem] rt-leading-[1.625rem]">{action.label}</span>
           </Link>
         ))}
       </CardContent>

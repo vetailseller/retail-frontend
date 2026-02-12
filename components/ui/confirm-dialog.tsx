@@ -86,11 +86,11 @@ export function ConfirmDialog({
                 {icon}
               </div>
             )}
-            <DialogTitle className="rt-text-center rt-text-16px rt-font-semibold">
+            <DialogTitle className="rt-text-center rt-text-[1rem] rt-leading-[1.625rem] rt-font-semibold">
               {title}
             </DialogTitle>
             {subtitle && (
-              <DialogDescription className="rt-text-12px rt-text-center rt-text-muted">
+              <DialogDescription className="rt-text-[0.75rem] rt-leading-[1.625rem] rt-text-center rt-text-muted">
                 {subtitle}
               </DialogDescription>
             )}
@@ -102,7 +102,7 @@ export function ConfirmDialog({
               disabled={primaryButtonDisabled}
               className="rt-w-full rt-text-white"
             >
-              <span className="rt-text-16px rt-w-full rt-font-medium">
+              <span className="rt-text-[1rem] rt-leading-[1.625rem] rt-w-full rt-font-medium">
                 {primaryButtonText}
               </span>
             </Button>
@@ -117,7 +117,7 @@ export function ConfirmDialog({
                       asChild
                       variant="plain"
                       size="plain"
-                      className="rt-w-full rt-py-[11px] rt-px-[77px] rt-text-15px hover:rt-text-gray-700"
+                      className="rt-w-full rt-py-[11px] rt-px-[77px] rt-text-[0.9375rem] rt-leading-[2.0625rem] hover:rt-text-gray-700"
                     >
                       <Link href={secondaryButtonHref!}>
                         {secondaryButtonText}

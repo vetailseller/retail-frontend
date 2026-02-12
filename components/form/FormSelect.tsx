@@ -59,7 +59,7 @@ export function FormSelect<TFieldValues extends FieldValues>({
                 htmlFor={name}
                 className={cn(
                   errorMessage && "rt-text-destructive",
-                  "rt-font-primary rt-text-13px rt-text-[#4C4C4C] rt-font-medium",
+                  "rt-font-primary rt-text-[0.8125rem] rt-leading-[1.375rem] rt-text-[#4C4C4C] rt-font-medium",
                 )}
               >
                 {label}
@@ -89,7 +89,7 @@ export function FormSelect<TFieldValues extends FieldValues>({
                   <If
                     isTrue={!!helperText && !field.value && !errorMessage}
                     ifBlock={
-                      <span className="rt-ml-auto rt-mr-1 rt-text-11px rt-text-muted rt-whitespace-nowrap">
+                      <span className="rt-ml-auto rt-mr-1 rt-text-[0.6875rem] rt-leading-[1.5rem] rt-text-muted rt-whitespace-nowrap">
                         {helperText}
                       </span>
                     }
@@ -107,7 +107,7 @@ export function FormSelect<TFieldValues extends FieldValues>({
 
             {/* Error Message */}
             {errorMessage && (
-              <p className="rt-text-11px rt-text-destructive rt-mt-1">
+              <p className="rt-text-[0.6875rem] rt-leading-[1.5rem] rt-text-destructive rt-mt-1">
                 {errorMessage}
               </p>
             )}

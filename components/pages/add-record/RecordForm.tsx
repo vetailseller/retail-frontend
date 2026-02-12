@@ -142,7 +142,7 @@ export function RecordForm() {
           disabled={isLoading || isSubmitting}
           className="rt-text-white rt-w-11/12 "
         >
-          <span className="rt-font-primary rt-text-15px rt-mr-[7px]">
+          <span className="rt-font-primary rt-text-[0.9375rem] rt-leading-[2.0625rem] rt-mr-[7px]">
             စာရင်းမှတ်တမ်း မှတ်မည်
           </span>
           <FloppyDisk />

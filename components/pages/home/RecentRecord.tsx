@@ -58,7 +58,7 @@ export function RecentRecord() {
   return (
     <div className="rt-w-full rt-flex-1 rt-bg-white rt-py-[14px] rt-px-[19px] rt-rounded-t-20 rt-flex rt-flex-col">
       <div className="rt-flex rt-items rt-justify-between rt-font-secondary">
-        <p className="rt-font-bold rt-text-primary rt-text-17px">
+        <p className="rt-font-bold rt-text-primary rt-text-[1.0625rem] rt-leading-[2.3125rem]">
           နောက်ဆုံးစာရင်းမှတ်တမ်း
         </p>
         <Link

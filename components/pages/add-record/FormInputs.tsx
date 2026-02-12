@@ -69,7 +69,7 @@ export function FormInputs({
           label="ငွေသွင်း/ထုတ်ပမာဏ"
           placeholder="ငွေသွင်း/ထုတ်ပမာဏထည့်ပါ"
           endIcon={
-            <span className="rt-font-inter rt-text-14px rt-text-muted">Ks</span>
+            <span className="rt-font-inter rt-text-[0.875rem] rt-leading-[1.0625rem] rt-text-muted">Ks</span>
           }
           floatingLabel={false}
           isCurrency
@@ -85,7 +85,7 @@ export function FormInputs({
           label="လွှဲခ/အမြတ်"
           placeholder="လွှဲခ/အမြတ်ထည့်ပါ"
           endIcon={
-            <span className="rt-font-inter rt-text-14px rt-text-muted">Ks</span>
+            <span className="rt-font-inter rt-text-[0.875rem] rt-leading-[1.0625rem] rt-text-muted">Ks</span>
           }
           floatingLabel={false}
           isCurrency

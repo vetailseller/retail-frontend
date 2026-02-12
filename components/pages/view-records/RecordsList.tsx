@@ -63,23 +63,23 @@ export function RecordsList({
                   chevronClassName="rt-absolute rt-top-3 rt-right-4"
                 >
                   <div className="rt-w-full rt-px-[15px]">
-                    <span className="rt-font-inter rt-text-14px rt-font-bold rt-text-primary rt-mb-[18px]">
+                    <span className="rt-font-inter rt-text-[0.875rem] rt-leading-[1.0625rem] rt-font-bold rt-text-primary rt-mb-[18px]">
                       {formatCalendarDate(record.date)}
                     </span>
                     <div className="rt-flex rt-items-center rt-justify-between rt-mt-3">
                       <div className="rt-flex rt-flex-col">
-                        <span className="rt-text-muted-light rt-text-13px rt-font-secondary">
+                        <span className="rt-text-muted-light rt-text-[0.8125rem] rt-leading-[1.375rem] rt-font-secondary">
                           စုစုပေါင်း ငွေသွင်း/ထုတ်
                         </span>
-                        <span className="rt-font-secondary rt-font-bold rt-text-17px">
+                        <span className="rt-font-secondary rt-font-bold rt-text-[1.0625rem] rt-leading-[2.3125rem]">
                           {formatCurrency(record.totalAmount)} Ks
                         </span>
                       </div>
                       <div className="rt-flex rt-flex-col rt-items-end">
-                        <span className="rt-text-muted-light rt-text-13px rt-font-secondary">
+                        <span className="rt-text-muted-light rt-text-[0.8125rem] rt-leading-[1.375rem] rt-font-secondary">
                           စုစုပေါင်း လွှဲခ/ အမြတ်
                         </span>
-                        <span className="rt-font-secondary rt-font-bold rt-text-17px rt-text-accent rt-z-50">
+                        <span className="rt-font-secondary rt-font-bold rt-text-[1.0625rem] rt-leading-[2.3125rem] rt-text-accent rt-z-50">
                           {formatCurrency(record.totalFee)} Ks
                         </span>
                       </div>

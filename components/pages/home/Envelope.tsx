@@ -58,15 +58,15 @@ export function Envelope() {
                     elseBlock={<EyeClosedIcon />}
                   />
                 </Button>
-                <span className="rt-font-primary rt-text-15px rt-text-[#313131]">
+                <span className="rt-font-primary rt-text-[0.9375rem] rt-leading-[2.0625rem] rt-text-[#313131]">
                   ငွေသွင်း/ထုတ်
                 </span>
               </div>
               <div className="rt-flex rt-items-center">
-                <span className="rt-font-inter rt-font-semibold rt-text-21px">
+                <span className="rt-font-inter rt-font-semibold rt-text-[1.3125rem] rt-leading-[1.5625rem]">
                   {showAmount ? formatNumber(total.total) : "* * * * * *"}
                 </span>
-                <span className="rt-text-15px rt-ml-1"> Ks</span>
+                <span className="rt-text-[0.9375rem] rt-leading-[2.0625rem] rt-ml-1"> Ks</span>
               </div>
             </div>
             <div className="rt-flex rt-flex-col rt-basis-1/2 rt-gap-[2px]">
@@ -82,15 +82,15 @@ export function Envelope() {
                     elseBlock={<EyeClosedIcon />}
                   />
                 </Button>
-                <span className="rt-font-primary rt-text-15px rt-text-[#313131]">
+                <span className="rt-font-primary rt-text-[0.9375rem] rt-leading-[2.0625rem] rt-text-[#313131]">
                   လွှဲခ/အမြတ်
                 </span>
               </div>
               <div className="rt-flex rt-items-center rt-font-inter">
-                <span className="rt-font-semibold rt-text-21px">
+                <span className="rt-font-semibold rt-text-[1.3125rem] rt-leading-[1.5625rem]">
                   {showFee ? formatNumber(total.fee) : "* * * * * *"}
                 </span>
-                <span className="rt-text-15px rt-ml-1">Ks</span>
+                <span className="rt-text-[0.9375rem] rt-leading-[2.0625rem] rt-ml-1">Ks</span>
               </div>
             </div>
           </div>

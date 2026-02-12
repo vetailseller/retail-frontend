@@ -38,11 +38,11 @@ export function Record({ record, className }: RecordProps) {
             {record.description}
           </span>
         )}
-        <span className="rt-font-inter rt-text-15px rt-leading-none">
+        <span className="rt-font-inter rt-text-[0.9375rem] rt-leading-[2.0625rem] rt-leading-none">
           {formatNumber(record.amount!)} Ks
         </span>
       </div>
-      <div className="rt-font-inter rt-text-15px rt-flex rt-justify-between rt-items-center rt-leading-none">
+      <div className="rt-font-inter rt-text-[0.9375rem] rt-leading-[2.0625rem] rt-flex rt-justify-between rt-items-center rt-leading-none">
         <span>{record.phoneNo}</span>
         <span className="rt-text-accent">{formatNumber(record.fee!)} Ks</span>
       </div>
@@ -76,11 +76,11 @@ export function ReportRecord({ record, className }: ReportRecordProps) {
             {record.Description}
           </span>
         )}
-        <span className="rt-font-inter rt-text-15px rt-leading-none">
+        <span className="rt-font-inter rt-text-[0.9375rem] rt-leading-[2.0625rem] rt-leading-none">
           {formatNumber(record.Amount!)} Ks
         </span>
       </div>
-      <div className="rt-font-inter rt-text-15px rt-flex rt-justify-between rt-items-center rt-leading-none">
+      <div className="rt-font-inter rt-text-[0.9375rem] rt-leading-[2.0625rem] rt-flex rt-justify-between rt-items-center rt-leading-none">
         <span>{record.PhoneNo}</span>
         <span className="rt-text-accent">{formatNumber(record.Fee!)} Ks</span>
       </div>

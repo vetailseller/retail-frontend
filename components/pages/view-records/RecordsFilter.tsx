@@ -89,7 +89,7 @@ export function RecordsFilter({
             onClick={() => setSelectedPay(null)}
             className="rt-relative"
           >
-            <span className="rt-px-[14px] rt-py-[9.5px] rt-text-center rt-bg-primary rt-text-white rt-rounded-5 rt-text-11px">
+            <span className="rt-px-[14px] rt-py-[9.5px] rt-text-center rt-bg-primary rt-text-white rt-rounded-5 rt-text-[0.6875rem] rt-leading-[1.5rem]">
               All
             </span>
             <If
@@ -130,7 +130,7 @@ export function RecordsFilter({
             onClick={() => setSelectedPay("other")}
             className="rt-relative"
           >
-            <span className="rt-px-[5.1px] rt-py-[10px] rt-text-center rt-bg-primary rt-text-white rt-rounded-5 rt-text-11px">
+            <span className="rt-px-[5.1px] rt-py-[10px] rt-text-center rt-bg-primary rt-text-white rt-rounded-5 rt-text-[0.6875rem] rt-leading-[1.5rem]">
               အခြား
             </span>
             <If

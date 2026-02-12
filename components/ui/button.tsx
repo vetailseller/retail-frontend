@@ -23,8 +23,8 @@ const buttonVariants = cva(
           "rt-bg-transparent hover:rt-bg-transparent hover:rt-text-gray-100 [&_svg]:rt-pointer-events-none [&_svg]:rt-size-auto [&_svg]:rt-shrink-0",
       },
       size: {
-        default: "rt-py-[11px] rt-px-[77px] rt-text-15px rt-font-bold",
-        sm: "rt-h-8 rt-rounded-md rt-px-3 rt-text-xs",
+        default: "rt-py-[11px] rt-px-[77px] rt-text-[0.9375rem] rt-leading-[2.0625rem] rt-font-bold",
+        sm: "rt-h-8 rt-rounded-md rt-px-3 rt-text-[0.6875rem] rt-leading-[1.5rem]",
         lg: "rt-h-10 rt-rounded-md rt-px-8",
         icon: "rt-h-9 rt-w-9",
         plain: "rt-p-0 rt-w-auto rt-h-auto",

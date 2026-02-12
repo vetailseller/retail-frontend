@@ -71,7 +71,7 @@ export function DatePicker({
               "rt-text-muted-foreground rt-pointer-events-none",
               "rt-transition-all rt-duration-200 rt-ease-linear",
               "rt-bg-background rt-px-1",
-              isFloating && "rt-top-0 rt-text-xs",
+              isFloating && "rt-top-0 rt-text-[0.6875rem] rt-leading-[1.5rem]",
               error && isFloating && "rt-text-destructive",
             )}
           >

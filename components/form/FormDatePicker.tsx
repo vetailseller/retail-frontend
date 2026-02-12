@@ -211,10 +211,10 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
                   <label
                     className={cn(
                       "rt-absolute rt-left-3 rt-top-1/2 -rt-translate-y-1/2",
-                      "rt-pointer-events-none rt-font-secondary rt-text-14px rt-text-muted",
+                      "rt-pointer-events-none rt-font-secondary rt-text-[0.875rem] rt-leading-[1.0625rem] rt-text-muted",
                       "rt-transition-all rt-duration-200 rt-ease-linear",
                       "rt-bg-white rt-px-1",
-                      isFloating && "rt-top-0 rt-text-xs",
+                      isFloating && "rt-top-0 rt-text-[0.6875rem] rt-leading-[1.5rem]",
                       errorMessage && isFloating && "rt-text-destructive",
                       startIcon && !isFloating && "rt-left-10",
                       startIcon && isFloating && "rt-left-5",
@@ -227,7 +227,7 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
 
               {/* Error Message */}
               {showError && errorMessage && (
-                <p className="rt-text-11px rt-text-destructive rt-mt-1">
+                <p className="rt-text-[0.6875rem] rt-leading-[1.5rem] rt-text-destructive rt-mt-1">
                   {errorMessage}
                 </p>
               )}
@@ -333,7 +333,7 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
 
             {/* Error Message */}
             {showError && errorMessage && (
-              <p className="rt-text-11px rt-text-destructive rt-mt-1">
+              <p className="rt-text-[0.6875rem] rt-leading-[1.5rem] rt-text-destructive rt-mt-1">
                 {errorMessage}
               </p>
             )}
